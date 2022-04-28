@@ -1,0 +1,109 @@
+<html>
+	
+	<head>
+	<title> Shopping List | CCAPDEV MP </title>
+	
+	<style>
+	input[type= "number"]{
+		width: 80px ;
+		text-align: "center";
+	}
+	.item {
+		background-color: white;
+		cursor: pointer;
+		padding: 18px;
+		width: 100%;
+		border: none;
+		outline: none;
+		text-align: left;
+	}
+	
+
+	.description{
+		padding: 0 18px;
+		display: none;
+		overflow: hidden;
+	}
+	
+	
+	</style>
+	
+	
+	<body align =center>
+	<h1>Your Shopping List</h1>
+	
+	<div>
+		
+		<table align =center border =1>
+			<th> Pic </th>
+			<th style = "width: 500px"> Item</th>
+			<th> Qty needed</th>
+			<tr>
+				<td>*insert image</td>
+				<td><button type ="button" class = "item">item1</button>
+				<p class = "description">
+					description for item1
+				</p></td>	
+				<td><input type = "number"  min =0> </td>
+			</tr>
+			
+			<tr>
+				<td>*insert image</td>
+				<td><button type ="button" class = "item">item2 </button>
+				<p class="description">
+					description 2
+				</p></td>
+				<td><input type = "number"  min =0> </td>
+			</tr>
+			
+			<tr>
+				<td>*insert image</td>
+				<td><button type ="button" class = "item">item3</button>
+				<p class= "description">
+					description 3
+				</p></td>
+				<td><input type = "number"  min =0> </td>
+			</tr>
+			
+			<tr>
+				<td> *insert image</td>
+				<td><button type = "button" class="item">item4</button>
+				<p class= "description">
+					description 4
+				</p></td>
+				<td><input type = "number"  min =0> </td>
+			</tr>
+			<tr>
+				<td>*insert image</td>
+				<td><button type ="button" class = "item">item5</button>
+				<p class ="description"> description 5 </p></td>
+				<td><input type = "number"  min =0> </td>
+			</tr>
+			
+		</table>
+	
+	
+	</div>
+	<script>
+	
+	var col= document.getElementsByClassName("item");
+	var i;
+	
+	for(i=0;i<col.length; i++){
+		col[i].addEventListener("click", function(){
+			this.classList.toggle("active");
+			var description = this.nextElementSibling;
+			if (description.style.display === "block") {
+				description.style.display = "none";
+			} 
+			else
+			{
+				description.style.display = "block";
+			}
+		});
+	}
+	
+	</script>
+	</body>
+	</head>
+</html>
