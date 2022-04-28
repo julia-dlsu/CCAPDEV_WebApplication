@@ -1,0 +1,54 @@
+	<script>
+			
+		function submitLog(){
+			let user1 = "art";
+			let pass1 = "Cc4pdev$";
+			
+			var user = document.Login.uname.value;
+			var pass = document.Login.pass.value;
+			var valid = false;
+						
+			if((user.localeCompare(user1)==0) && (pass.localeCompare(pass1)==0)){
+				valid = true;
+			}
+			else if (user === "" ){
+				alert("Blank username");
+				valid=false;
+			}
+			else if (pass===""){
+				alert("Blank password");
+				valid =false;
+			}
+			else{
+				alert("wrong username or password");
+			}
+			
+		return valid;
+		}
+	</script>
+
+</head>
+
+<body align =center>
+	<h1 > Login</h1>
+	<form name = "Login" action ="https://www.google.com"  onsubmit= "return submitLog()">
+		<table align =center>
+			<tr>
+				<td>Username: </td>
+				<td><input type=text id = "uname"> </text></td>
+			</tr>
+			<tr>
+				<td> Password: </td>
+				<td><input type=password minlength="8" id="pass"></text></td>
+			</tr>
+			<tr>
+				<td><input type=submit value ="login "></td>
+			</tr>
+			
+		</table>
+	</form>
+	Don't have an account? <a href = "Register.html"> Sign-up</a>
+	
+	
+</body>
+</html>
