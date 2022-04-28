@@ -1,0 +1,89 @@
+<html>
+<head>
+	<title> Registration | CCAPDEV MP</title>
+	
+	<style>
+	</style>
+	<script>
+		
+	function RegSubmit(){
+		var pw = document.Register.pass.value;
+		var Cpass = document.Register.CPass.value;
+		var name = document.Register.name.value;
+		var email = document.Register.email.value; 
+		var user = document.Register.uname.value;
+		
+		var valid=false;
+		
+		if (pw.localeCompare(Cpass) !=0){
+			alert("Passwords doesn't match");
+		}
+		else{
+			
+			valid = true;
+		}
+		return valid;
+	}
+	
+	function validPicture(){
+
+		var picInput = document.Register.dp;
+		var pic = picInput.value;
+		var validType =  /(\.jpg|\.jpeg|\.png)$/i;
+		
+		if(!validType.exec(pic)){
+			alert("Wrong file type. Please input a jpeg, jpg, or png file");
+			picInput.value = '';
+			return false;
+		}
+		else {
+			return true;
+		}
+		
+	}
+	</script>
+</head>
+
+<body align =center>
+	<h1> Registration</h1>
+	<form name = "Register" action = "Login.html" onsubmit="return RegSubmit()">
+		<table align =center>
+			<tr>
+				<td>Name: </td>
+				<td><input type=text id = "name"  required> </text></td>
+			</tr>
+			
+			<tr>
+				<td>Email: </td>
+				<td><input type=email id = "email" required> </text></td>
+			</tr>
+
+			<tr>
+				<td>Username: </td>
+				<td><input type=text id = "uname" required> </text></td>
+			</tr>
+			
+			<tr>
+				<td> Password: </td>
+				<td><input type=password id="pass" minlength="8" required></text></td>
+			</tr>
+			
+			<tr>
+				<td> Confirm Password: </td>
+				<td><input type=password id="CPass" required></text></td>
+			</tr>
+			
+			<tr>
+				<td> Upload Profile Picture (Optional): </td>
+				<td><input type=file accept="image/*" id="dp" onchange = "return validPicture()"/></text></td>
+			</tr>
+			<tr>
+				<td><input type=submit value =Register ></td>
+			</tr>
+			
+		</table>
+	</form>
+	Have an account already? <a href = "Login.html"> Login</a>
+	
+</body>
+</html>
