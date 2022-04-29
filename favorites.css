@@ -1,0 +1,34 @@
+.card-img-top {
+    /* width: 100%;
+    height: 100%; */
+    object-fit: cover;
+}
+
+.qty {
+    margin-top: 0.6em;
+    margin-bottom: 0.6rem;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    height: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-subtitle {
+    font-size: 0.8rem;
+}
+
+.card-footer {
+    font-size: 0.8rem;
+}
+
+.card-body {
+    height: 7.4rem;
+}
