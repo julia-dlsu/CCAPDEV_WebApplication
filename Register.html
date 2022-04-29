@@ -25,23 +25,10 @@
 		return valid;
 	}
 	
-	function validPicture(){
-
-		var picInput = document.Register.dp;
-		var pic = picInput.value;
-		var validType =  /(\.jpg|\.jpeg|\.png)$/i;
-		
-		if(!validType.exec(pic)){
-			alert("Wrong file type. Please input a jpeg, jpg, or png file");
-			picInput.value = '';
-			return false;
-		}
-		else {
-			return true;
-		}
-		
-	}
+	
 	</script>
+	
+	<script src = "pictureValidation.js"></script>
 </head>
 
 <body align =center>
@@ -75,7 +62,7 @@
 			
 			<tr>
 				<td> Upload Profile Picture (Optional): </td>
-				<td><input type=file accept="image/*" id="dp" onchange = "return validPicture()"/></text></td>
+				<td><input type=file accept="image/*" id="pic" onchange = "return validPicture()"/></text></td>
 			</tr>
 			<tr>
 				<td><input type=submit value =Register ></td>
