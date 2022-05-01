@@ -19,17 +19,20 @@
         <!-- header w/ navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Inverntory App</a>
+                <!-- navbar title -->
+                <a class="navbar-brand" href="#home">Inverntory App</a>
+                <!-- changes navbar into a toggle when screen is smaller -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <!-- navbar contents -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="#">Current Inventory</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Favorites</a>
+                            <a class="nav-link active" aria-current="page" href="favorites.html">Favorites</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Shopping List</a>
@@ -38,8 +41,7 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <li><a class="dropdown-item" href="#">Profile</a></li>
-                              <li><a class="dropdown-item" href="#">Account Settings</a></li>
-                              <li><a class="dropdown-item" href="#">Logout</a></li>
+                              <li><a class="dropdown-item" href="https://google.com">Logout</a></li>
                             </ul>
                           </li>
                     </ul>
@@ -48,8 +50,21 @@
         </nav>
 
         <div class="container">
+
+            <!-- breadcrumb -->
+            <div class="row justify-content-center mt-3 p-2">
+                <div class="col-sm-12 col-md-8">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" style="">Current Inventory</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Favorites</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
             <!-- search bar -->
-            <div class="row justify-content-center mt-3">
+            <div class="row justify-content-center mb-3">
                 <div class="col-sm-12 col-md-8">
                     <form class="d-flex mb-3">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -66,7 +81,8 @@
                         <div class="card h-100">
                             <img src="img/item-1.png" class="card-img-top" alt="gardenia bread">
                             <div class="card-body">
-                                <h5 class="card-title">Gardenia White Bread - Regular Size</h5>
+                                <!-- makes the card clickable -->
+                                <a href="item1.html"><h5 class="card-title">Gardenia White Bread - Regular Size</h5></a>
                                 <h6 class="card-subtitle text-muted">Breads & Pastries</h6>
                             </div>
                             <div class="card-footer"> 
@@ -81,7 +97,8 @@
                         <div class="card h-100">
                             <img src="img/item-2.png" class="card-img-top" alt="gardenia bread">
                             <div class="card-body">
-                                <h5 class="card-title">Coca-Cola in can</h5>
+                                <!-- makes the card clickable -->
+                                <a href="#"><h5 class="card-title">Coca-cola in can</h5></a>
                                 <h6 class="card-subtitle text-muted">Beverages</h6>
                             </div>
                             <div class="card-footer">
@@ -96,7 +113,8 @@
                         <div class="card h-100">
                             <img src="img/item-3.png" class="card-img-top" alt="gardenia bread">
                             <div class="card-body">
-                                <h5 class="card-title">Safeguard Liquid Handsoap</h5>
+                                <!-- makes the card clickable -->
+                                <a href="#"><h5 class="card-title">Safeguard Liquid Handsoap</h5></a>
                                 <h6 class="card-subtitle text-muted">Toiletries</h6>
                             </div>
                             <div class="card-footer">
@@ -111,7 +129,8 @@
                         <div class="card h-100">
                             <img src="img/item-4.png" class="card-img-top" alt="gardenia bread">
                             <div class="card-body">
-                                <h5 class="card-title">Magnolia Chicken Breast Fillet</h5>
+                                <!-- makes the card clickable -->
+                                <a href="#"><h5 class="card-title">Chicken Breast Fillet</h5></a>
                                 <h6 class="card-subtitle text-muted">Meat & Poultry</h6>
                             </div>
                             <div class="card-footer">
@@ -126,7 +145,8 @@
                         <div class="card h-100">
                             <img src="img/item-5.png" class="card-img-top" alt="gardenia bread">
                             <div class="card-body">
-                                <h5 class="card-title">Silver Swan So Sauce</h5>
+                                <!-- makes the card clickable -->
+                                <a href="#"><h5 class="card-title">Silver Swan Soy Sauce Pouch</h5></a>
                                 <h6 class="card-subtitle text-muted">Condiments & Sauces</h6>
                             </div>
                             <div class="card-footer">
@@ -141,3 +161,9 @@
 
     </body>
 </html>
+
+<!-- Sources 
+        Bootstrap (n.d.) Breadcrumb (Version 5.1) [Source Code/Documentation]. https://getbootstrap.com/docs/5.1/components/breadcrumb/
+        Bootstrap (n.d.) Cards (Version 5.1) [Source Code/Documentation]. https://getbootstrap.com/docs/5.1/components/card/
+        Bootstrap (n.d.) Navbar (Version 5.1) [Source Code/Documentation]. https://getbootstrap.com/docs/5.1/components/navbar/
+-->
