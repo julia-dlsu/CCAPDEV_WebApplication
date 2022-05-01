@@ -1,5 +1,9 @@
+.col-center {
+    margin: 0 auto;
+}
+
 .container {
-    max-width: max-content;
+    max-width: 60rem;
 }
 
 .qty {
