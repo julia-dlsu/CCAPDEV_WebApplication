@@ -1,92 +1,107 @@
 <html>
 	
 	<head>
-	<title> Shopping List | CCAPDEV MP </title>
 	
 	<style>
-	input[type= "number"]{
-		width: 80px ;
-		text-align: "center";
-	}
-	.item {
-		background-color: white;
-		cursor: pointer;
-		padding: 18px;
-		width: 100%;
-		border: none;
-		outline: none;
-		text-align: left;
-	}
-	.item:hover{
-		background-color: #F2F3A8;
-	}
-	.description{
-		padding: 0 18px;
-		display: none;
-		font-style: italic;
-		overflow: hidden;
-	}
-	
 	
 	</style>
 	
-	
-	<body align =center>
-	<h1>Your Shopping List</h1>
-	
-	<div>
-		<table align =center>
-			<th> Pic </th>
-			<th style = "width: 500px"> Item</th>
-			<th> Qty needed</th>
-			<tr>
-				<td>*insert image</td>
-				<td><button type ="button" class = "item">item1</button>
-				<p class = "description">
-					description for item1
-				</p></td>	
-				<td><input type = "number"  min =0 value = 1> </td>
-			</tr>
-			
-			<tr>
-				<td>*insert image</td>
-				<td><button type ="button" class = "item">item2 </button>
-				<p class="description">
-					description 2
-				</p></td>
-				<td><input type = "number"  min =0 value =1> </td>
-			</tr>
-			
-			<tr>
-				<td>*insert image</td>
-				<td><button type ="button" class = "item">item3</button>
-				<p class= "description">
-					description 3
-				</p></td>
-				<td><input type = "number"  min =0 value =2> </td>
-			</tr>
-			
-			<tr>
-				<td> *insert image</td>
-				<td><button type = "button" class="item">item4</button>
-				<p class= "description">
-					description 4
-				</p></td>
-				<td><input type = "number"  min =0 value =3> </td>
-			</tr>
-			<tr>
-				<td>*insert image</td>
-				<td><button type ="button" class = "item">item5</button>
-				<p class ="description"> description 5 </p></td>
-				<td><input type = "number"  min =0 value = 1> </td>
-			</tr>
-			
-		</table>
+	<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <!-- navbar title -->
+                <a class="navbar-brand" href="#home"><i class="fas fa-boxes ms-1 me-2"></i> Inventory App</a>
+                <!-- changes navbar into a toggle when screen is smaller -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- navbar contents -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Current Inventory</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="favorites.html">Favorites</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="ShopList.html">Shopping List</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                              <li><a class="dropdown-item" href="https://google.com">Logout</a></li>
+                            </ul>
+                          </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+		<div class="container">
+            <!-- breadcrumb -->
+            <div class="row justify-content-center mt-3 p-2">
+                <div class="col-sm-12 col-md-8">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <i class="fad fa-warehouse-alt"></i>
+                            <li class="breadcrumb-item"><a href="#">Current Inventory</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Shopping List</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- search bar -->
+            <div class="row justify-content-center mb-3">
+                <div class="col-sm-12 col-md-8">
+                    <form class="d-flex mb-3">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+				
+	<div class = "shopList">
+		<div class = "col">
+			<img src="img/item-1.png" ></img>
+			<div class= "texts">
+				<div class = "item">Gardenia bread</div>
+				<p class = "category">Bread & Pastries</p></div>
+		</div>
 		
+		<div class = "col">
+			<img src="img/item-2.png" ></img>
+			<div class= "texts">
+				<div class = "item">Coca-cola in a can</div>
+				<p class ="category">Beverages</p></div>
+		</div>
+		
+		<div class = "col">
+			<img src="img/item-3.png" ></img>
+			<div class= "texts">
+				<div class = "item">Safeguard Liquid Handsoap</div>
+				<p class ="category">Toiletries</p></div>
+		</div>
+		
+		<div class = "col">
+			<img src="img/item-4.png" ></img>
+			<div class= "texts">
+				<div class = "item">Chicken Breast Fillet</div>
+				<p class ="category">Meat & Poultry</p></div>
+		</div>
+		
+		<div class = "col">
+			<img src="img/item-5.png" ></img>
+			<div class= "texts">
+				<div class = "item">Silver Swan Soy Sauce Pouch</div>
+				<p class ="category">Condiments & Sauces</p></div>
+		</div>
 	
 	</div>
-	<script>
 	
+	<script>
+	/*
 	var col= document.getElementsByClassName("item");
 	var i;
 	
@@ -103,7 +118,7 @@
 			}
 		});
 	}
-	
+	*/
 	</script>
 	</body>
 	</head>
