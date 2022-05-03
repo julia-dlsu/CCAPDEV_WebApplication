@@ -1,0 +1,64 @@
+.shopList{
+	position: absolute;
+	width: 1046px;
+	height: 276px;
+	left: 200px;
+	top: 219px;
+	
+	background: #FFFFFF;
+	
+}
+img{
+	position: absolute;
+	width: 73px;
+	height: 73px;
+	
+	left: 100px;
+
+}
+.col{
+	
+	width: 834px;
+	height: 75px;
+	left: 200px;
+	
+	border: 1px solid #DFE0EB;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+.item{
+	height: 16px;
+	font-family: Mulish;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 16px;
+/* identical to box height, or 100% */
+
+	letter-spacing: 0.1px;
+
+	color: #313131;
+}
+.texts{
+	margin: auto;
+	position: absolute;
+	width: 50%;
+	height: 35px;
+	left: 200px;
+}
+a{
+	text-decoration:none;
+}
+.category{
+	font-family: Mulish;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+/* identical to box height, or 133% */
+
+letter-spacing: 0.1px;
+
+color: #313131;
+}
+
