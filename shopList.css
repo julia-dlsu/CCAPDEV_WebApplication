@@ -13,7 +13,7 @@ img{
 	width: 73px;
 	height: 73px;
 	
-	left: 100px;
+	left: 80px;
 
 }
 .col{
@@ -28,7 +28,6 @@ img{
 }
 .item{
 	height: 16px;
-	font-family: Mulish;
 	font-style: normal;
 	font-weight: 700;
 	font-size: 16px;
@@ -39,18 +38,33 @@ img{
 
 	color: #313131;
 }
+
 .texts{
 	margin: auto;
 	position: absolute;
-	width: 50%;
-	height: 35px;
-	left: 200px;
+	width: 620px;
+	height: 75px;
+	left: 180px;
+}
+.col: hover{
+	background-color: gray;
+}
+.col-description{
+	display: none;
+	overflow: hidden;
+	height: 75px;
+	width: 834px;
+	left: 80 px;
+	
+	border: 1px solid #DFE0EB;
+	box-sizing: border-box;
+	border-radius: 5px;
+	
 }
 a{
 	text-decoration:none;
 }
 .category{
-	font-family: Mulish;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 12px;
