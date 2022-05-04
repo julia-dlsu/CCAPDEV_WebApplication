@@ -1,9 +1,12 @@
 <html>
 <head>
-	<title> Registration | CCAPDEV MP</title>
+	<title> Inventory - Sign Up</title>
 	
-	<style>
-	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+	<link rel="stylesheet" href = "LogReg.css"></style>
+	
 	<script>
 		
 	function RegSubmit(){
@@ -31,46 +34,44 @@
 	<script src = "pictureValidation.js"></script>
 </head>
 
-<body align =center>
-	<h1> Registration</h1>
+<body >
+	<div class= "contain">
+	<h1> Sign- Up</h1>
 	<form name = "Register" action = "Login.html" onsubmit="return RegSubmit()">
-		<table align =center>
-			<tr>
-				<td>Name: </td>
-				<td><input type=text id = "name"  required> </text></td>
-			</tr>
-			
-			<tr>
-				<td>Email: </td>
-				<td><input type=email id = "email" required> </text></td>
-			</tr>
+		
+		<div class="form-group">	
+			Name: 
+			<input type=text id = "name"  required> </text>
+		</div>	
+		
+		<div class="form-group">
+			Email: 
+			<input type=email id = "email" required> </text>
+		</div>
 
-			<tr>
-				<td>Username: </td>
-				<td><input type=text id = "uname" required> </text></td>
-			</tr>
+		<div class="form-group">		
+			Username: 
+			<input type=text id = "uname" required> </text>
+		</div>	
+
+		<div class="form-group">		
+			Password: 
+			<input type=password id="pass" minlength="8" required></text>	
+		</div>	
+		
+		<div class="form-group">
+			Confirm Password:
+			<input type=password id="CPass" required></text>		
+		</div>	
+		
+		<div class="form-group">		
+			<input id= "btn"type=submit value =Register >
+
+		</div>
 			
-			<tr>
-				<td> Password: </td>
-				<td><input type=password id="pass" minlength="8" required></text></td>
-			</tr>
-			
-			<tr>
-				<td> Confirm Password: </td>
-				<td><input type=password id="CPass" required></text></td>
-			</tr>
-			
-			<tr>
-				<td> Upload Profile Picture (Optional): </td>
-				<td><input type=file accept="image/*" id="pic" onchange = "return validPicture()"/></text></td>
-			</tr>
-			<tr>
-				<td><input type=submit value =Register ></td>
-			</tr>
-			
-		</table>
+		
 	</form>
 	Have an account already? <a href = "Login.html"> Login</a>
-	
+	</div>
 </body>
 </html>
