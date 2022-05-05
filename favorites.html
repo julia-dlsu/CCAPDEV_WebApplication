@@ -22,7 +22,7 @@
                 <!-- navbar title -->
                 <a class="navbar-brand" href="#home"><i class="fas fa-boxes ms-1 me-2"></i> Inventory App</a>
                 <!-- changes navbar into a toggle when screen is smaller -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- navbar contents -->
@@ -32,14 +32,14 @@
                             <a class="nav-link" href="#">Current Inventory</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="favorites.html">Favorites</a>
+                            <a class="nav-link active" href="favorites.html">Favorites</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Shopping List</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Account</a>
+                            <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="profile.html">Profile</a></li>
                               <li><a class="dropdown-item" href="https://google.com">Logout</a></li>
                             </ul>
@@ -54,11 +54,11 @@
             <!-- breadcrumb -->
             <div class="row justify-content-center mt-3 p-2">
                 <div class="col-sm-12 col-md-8">
-                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <nav style="--bs-breadcrumb-divider: '>';">
                         <ol class="breadcrumb">
                             <i class="fad fa-warehouse-alt"></i>
                             <li class="breadcrumb-item"><a href="#">Current Inventory</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Favorites</li>
+                            <li class="breadcrumb-item active">Favorites</li>
                         </ol>
                     </nav>
                 </div>
@@ -68,7 +68,7 @@
             <div class="row justify-content-center mb-3">
                 <div class="col-sm-12 col-md-8">
                     <form class="d-flex mb-3">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2" type="search" placeholder="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
@@ -87,7 +87,7 @@
                                 <h6 class="card-subtitle text-muted">Breads & Pastries</h6>
                             </div>
                             <div class="card-footer"> 
-                                <p class="card-text float-start qty">Quantity: 3</p>
+                                <p class="card-text float-start qty">Quantity: 2</p>
                                 <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
                             </div>
                         </div>

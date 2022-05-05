@@ -34,22 +34,47 @@
                 margin-right: 3rem;
             }
         </style>
-    
+
         <script>
+            // calls the input for upload file
             function uploadImg() {
                 $("#imgUpload").click();
+            }
+
+            // checks if 2 pass
+            function checkPasswords() {
+		        var valid = false;
+
+                var pass1 = document.forms["changePassword"]["newpass"].value;
+                var pass2 = document.forms["changePassword"]["repass"].value;
+                var pass3 = document.forms["changePassword"]["curpass"].value;
+
+                if (pass1 != pass2 || pass1 == "" || pass2 == ""){
+                    document.forms["changePassword"]["newpass"].style.backgroundColor = "red";
+                    document.forms["changePassword"]["repass"].style.backgroundColor = "red";
+                }
+                if (pass3 == "") {
+                    document.forms["changePassword"]["curpass"].style.backgroundColor = "red";
+                }
+        
+                if (pass1 == pass2 && pass3 != "") {
+                    valid = true;
+                }
+		
+		        return valid;
             }
         </script>
     </head>
 
     <body>
+
         <!-- header w/ navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <!-- navbar title -->
                 <a class="navbar-brand" href="#home"><i class="fas fa-boxes ms-1 me-2"></i> Inventory App</a>
                 <!-- changes navbar into a toggle when screen is smaller -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- navbar contents -->
@@ -64,10 +89,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Shopping List</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <li><a class="dropdown-item" aria-current="page" href="profile.html">Profile</a></li>
+                        <li class="nav-item active dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Account</a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item active" href="profile.html">Profile</a></li>
                               <li><a class="dropdown-item" href="https://google.com">Logout</a></li>
                             </ul>
                           </li>
@@ -76,11 +101,12 @@
             </div>
         </nav>
 
-        <div class="container rounded mt-4">
+        <div class="container mt-4">
             <!-- profile details -->
-            <div class="row justify-content-center shadow">
+            <div class="row justify-content-center shadow rounded">
                 <div class="col-5 p-3 text-center">
                     <img src="img/profilepic.png" class="img-fluid mb-2">
+                    <!-- choose file button is hiddent so "No File Chosen" doesn't show -->
                     <div style="height: 0px; overflow: hidden;">
                         <input type="file" id="imgUpload">
                     </div>
@@ -94,8 +120,8 @@
             </div>
 
             <!-- password settings -->
-            <div class="row shadow mt-3">
-                <div class="col-6 p-3 ps-5 py-4">
+            <div class="row shadow mt-3 rounded">
+                <div class="col-sm-8 col-md-6 p-3 ps-4 py-4">
                     <h4 class="card-title mb-2">Update Password</h5>
                     <form name="changePassword" onSubmit = "return checkPasswords()">
                         <!-- current password -->
@@ -119,6 +145,5 @@
             </div>
         </div>
 
-        <script src="validation.js"></script>
     </body>
 </html>
