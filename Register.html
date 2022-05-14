@@ -35,43 +35,47 @@
 </head>
 
 <body >
+	
 	<div class= "contain">
 	<h1> Sign- Up</h1>
 	<form name = "Register" action = "Login.html" onsubmit="return RegSubmit()">
 		
 		<div class="form-group">	
-			Name: 
-			<input type=text id = "name"  required> </text>
+			<label for = "name">Name: </label>
+			<input type=text id = "name" class = "form-control" placeholder="Name" required> 
 		</div>	
 		
 		<div class="form-group">
-			Email: 
-			<input type=email id = "email" required> </text>
+			<label for = "email">Email: </label>
+			<input type=email id = "email" class = "form-control" placeholder="Email" required> 
 		</div>
 
 		<div class="form-group">		
-			Username: 
-			<input type=text id = "uname" required> </text>
+			<label for= "uname">Username: </label>
+			<input type=text id = "uname" class = "form-control" placeholder = "Username" required> 
 		</div>	
 
 		<div class="form-group">		
-			Password: 
-			<input type=password id="pass" minlength="8" required></text>	
+			<label for= "pass">Password: </label> 
+			<input type=password id="pass" class = "form-control" minlength="8" placeholder="Password"required>	
 		</div>	
 		
 		<div class="form-group">
-			Confirm Password:
-			<input type=password id="CPass" required></text>		
+			<label for = "CPass">Confirm Password:</label>
+			<input type=password id="CPass" class = "form-control" placeholder = "Confirm Password"required>		
 		</div>	
-		
+		<div class="form-group">
+			<label for ="pic">Upload Profile Picture (Optional): </td>
+			<input type=file accept="image/*" id="pic" onchange = "return validPicture()">
+		</div>
 		<div class="form-group">		
-			<input id= "btn"type=submit value =Register >
+			<input id= "btn" class = "form-control" type=submit value =Register >
 
 		</div>
 			
 		
 	</form>
-	Have an account already? <a href = "Login.html"> Login</a>
+		<div class="form-group">Have an account already? <a href = "Login.html"> Login</a></div>
 	</div>
 </body>
 </html>
