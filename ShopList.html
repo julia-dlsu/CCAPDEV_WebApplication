@@ -39,19 +39,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="inventory.html">Current Inventory</a>
+                            <a class="nav-link" href="#">Current Inventory</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="favorites.htm">Favorites</a>
+                            <a class="nav-link" href="#">Favorites</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="shopping.html">Shopping List</a>
+                            <a class="nav-link active" href="shoplist.html">Shopping List</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Account</a>
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                              <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                              <li><a class="dropdown-item" href="https://google.com">Logout</a></li>
                             </ul>
                           </li>
                     </ul>
@@ -66,7 +66,7 @@
                     <nav style="--bs-breadcrumb-divider: '>';">
                         <ol class="breadcrumb">
                             <i class="fad fa-warehouse-alt"></i>
-                            <li class="breadcrumb-item"><a href="#">Current Inventory</a></li>
+                            <li class="breadcrumb-item"><a href="inventory.html">Current Inventory</a></li>
                             <li class="breadcrumb-item active">Shopping List</li>
                         </ol>
                     </nav>
@@ -95,9 +95,9 @@
                     	<h6 class="card-subtitle text-muted">Breads & Pastries</h6>
 					</div>
 					<div class="col-sm-12 col-md-4 p-4 text-center">
-						<a class="btn" href="#" role="button"><i class="fa fa-plus"></i></a>
-						<input type = "number" style= "width: 55px"min=0 value =1>
-						<a class="btn" href="#" role="button"><i class="fa fa-minus"></i></a>
+						<a class="btn plus"  href="#" role="button" ><i class="fa fa-plus"></i></a>
+						<input type = "number" style= "width: 55px"min=0 class="quantity" value=1 readonly>
+						<a class="btn minus" href="#" role="button"><i class="fa fa-minus"></i></a>
 						<a class="btn" href="#" role="button"><i class="fa fa-trash"></i></a>
 
 					</div>
@@ -113,9 +113,9 @@
                     	<h6 class="card-subtitle text-muted">Beverages</h6>
 					</div>
 					<div class="col-sm-12 col-md-4 p-4 text-center">
-						<a class="btn" href="#" role="button"><i class="fa fa-plus"></i></a>
-						<input type = "number" style= "width: 55px"min=0 value=1>
-						<a class="btn" href="#" role="button"><i class="fa fa-minus"></i></a>
+						<a class="btn plus" href="#" role="button" ><i class="fa fa-plus"></i></a>
+						<input type = "number" style= "width: 55px"min=0 class="quantity" value=1 readonly>
+						<a class="btn minus" href="#" role="button"><i class="fa fa-minus"></i></a>
 						<a class="btn" href="#" role="button"><i class="fa fa-trash"></i></a>
 
 					</div>
@@ -131,9 +131,9 @@
                     	<h6 class="card-subtitle text-muted">Toiletries</h6>
 					</div>
 					<div class="col-sm-12 col-md-4 p-4 text-center">						
-						<a class="btn" href="#" role="button"><i class="fa fa-plus"></i></a>
-						<input type = "number" style= "width: 55px"min=0 value=1>
-						<a class="btn" href="#" role="button"><i class="fa fa-minus"></i></a>
+						<a class="btn plus" href="#" role="button" ><i class="fa fa-plus"></i></a>
+						<input type = "number" style= "width: 55px"min=0 class="quantity" value=1 readonly>
+						<a class="btn minus" href="#" role="button"><i class="fa fa-minus"></i></a>
 						<a class="btn" href="#" role="button"><i class="fa fa-trash"></i></a>
 
 					</div>
@@ -149,9 +149,9 @@
                     	<h6 class="card-subtitle text-muted">Meat & Poultry</h6>
 					</div>
 					<div class="col-sm-12 col-md-4 p-4 text-center">
-						<a class="btn" href="#" role="button"><i class="fa fa-plus"></i></a>
-						<input type = "number" style= "width: 55px"min=0 value= 1>
-						<a class="btn" href="#" role="button"><i class="fa fa-minus"></i></a>
+						<a class="btn plus" href="#" role="button" ><i class="fa fa-plus"></i></a>
+						<input type = "number" style= "width: 55px"min=0 class="quantity" value=1 readonly>
+						<a class="btn minus" href="#" role="button"><i class="fa fa-minus"></i></a>
 						<a class="btn" href="#" role="button"><i class="fa fa-trash"></i></a>
 
 					</div>
@@ -167,16 +167,32 @@
                     	<h6 class="card-subtitle text-muted">Condiments & Sauces</h6>
 					</div>
 					<div class="col-sm-12 col-md-4 p-4 text-center">
-						<a class="btn" href="#" role="button"><i class="fa fa-plus"></i></a>
-						<input type = "number" style= "width: 55px"min=0 value=2>
-						<a class="btn" href="#" role="button"><i class="fa fa-minus"></i></a>
+						<a class="btn plus"  href="#" role="button" ><i class="fa fa-plus"></i></a>
+						<input type = "number" style= "width: 55px" min=0 class="quantity" value=2 readonly>
+						<a class="btn minus" href="#" role="button"><i class="fa fa-minus"></i></a>
 						<a class="btn" href="#" role="button"><i class="fa fa-trash"></i></a>
 
 					</div>
 				</div>
 			</div>
 		</div>	
-	
+		<script>
+			var quan = $(".quantity");
+			var plus = $(".plus");
+			var minus = $(".minus");
+			for (var i = 0; i < quan.length; i++) {
+				plus[i].addEventListener('click', function(i) {
+					quan[i].value = Number(quan[i].value)+ 1;
+				}.bind(null, i));
+				
+				minus[i].addEventListener('click', function(i) {
+					if (quan[i].value>0){
+					quan[i].value = Number(quan[i].value)- 1;
+					}
+				}.bind(null, i));
+			}
+
+		</script>
 	</body>
-	</head>
 </html>
+<!--Trincot. (2017) Javascript - find the index of clicked button. https://stackoverflow.com/questions/43075457/javascript-find-the-index-of-clicked-button -->
