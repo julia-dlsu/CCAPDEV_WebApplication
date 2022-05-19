@@ -58,6 +58,15 @@ button{
     font-size: 0.7rem;
 }
 
+h5 {
+    color: black; 
+}
+
 a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
     text-decoration: none;
 }
