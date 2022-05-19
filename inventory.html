@@ -17,19 +17,13 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     
-        <script src="pictureValidation.js"></script>
+    <script src="pictureValidation.js"></script>
     <script>
         function uploadImg() {
             $("#imgUpload").click();
         }
-
-        function heartSwitch(x) {
-            x.classList.toggle("fa", "fa-heart");   // fa fa-heart is the red heart. But I cant change it since class names should not have spaces. 
-            console.log("SHould have changed.");
-        }
     </script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="inventory.css">
 </head>
 
@@ -105,9 +99,9 @@
                         <h6 class="card-subtitle text-muted">Breads & Pastries</h6>
                     </div>
                     <div class="card-footer d-flex justify-content-center align-items-center">
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"> <i class='far fa-heart fa-ss' onclick="heartSwitch(this)" style='color:#1f1f1f'></i></a>
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -122,9 +116,9 @@
                         <h6 class="card-subtitle text-muted">Beverages</h6>
                     </div>
                     <div class="card-footer d-flex justify-content-center align-items-center">
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='far fa-heart fa-ss' style='color:#1f1f1f'></i></a>
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -139,9 +133,9 @@
                         <h6 class="card-subtitle text-muted">Toiletries</h6>
                     </div>
                     <div class="card-footer d-flex justify-content-center align-items-center">
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='far fa-heart fa-ss' style='color:#1f1f1f'></i></a>
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -156,9 +150,9 @@
                         <h6 class="card-subtitle text-muted">Meat & Poultry</h6>
                     </div>
                     <div class="card-footer d-flex justify-content-center align-items-center">
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"> <i class='far fa-heart fa-ss' style='color:#1f1f1f'></i></a>
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -173,9 +167,9 @@
                     <h6 class="card-subtitle text-muted">Condiments</h6>
                 </div>
                 <div class="card-footer d-flex justify-content-center align-items-center">
-                    <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"> <i class="fa fa-heart"></i></a>
-                    <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                    <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                    <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                    <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                    <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                 </div>
             </div>
         </div>
