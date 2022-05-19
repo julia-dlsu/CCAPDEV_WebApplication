@@ -115,7 +115,7 @@
                                 <div class="col-sm-8 col-lg-4">
                                     <!-- choose file button is hiddent so "No File Chosen" doesn't show -->
                                     <div style="height: 0px; overflow: hidden;">
-                                        <input type="file" id="imgUpload">
+                                        <input type="file" id="imgUpload" accept="image/*" id="pic" onchange = "return validPicture()">
                                     </div>
                                      <button type="button" class="btn btn-secondary btn-sm" onclick="uploadImg()">Choose Image</button>
                                 </div>

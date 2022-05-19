@@ -17,13 +17,13 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     
+    <script src="pictureValidation.js"></script>
     <script>
         function uploadImg() {
-                $("#imgUpload").click();
-            }
+            $("#imgUpload").click();
+        }
     </script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="inventory.css">
 </head>
 
@@ -87,36 +87,21 @@
             </div>
         </div>
 
-    <!--<div class="container">
-        <script src="counterFunctions.js"></script>
-
-        <div class="row justify-content-evenly my-3">
-            <div class="col-12">
-                <h3>Current Inventory</h3>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        id="searchBar">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                    <button type="button" class="btn btn-light me-auto" id="addButton" data-bs-toggle="modal"
-                        data-bs-target="#add-item-modal">Add Item</button>
-                </form>
-            </div>
-        </div>--->
 
         <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2" id="getMe">
             <!-- item-1 -->
             <div class="col">
                 <div class="card h-80">
                     <div class="card-body">
-                        <p class="fs-sm">Quantity: 3</p>
+                        <p class="fs-sm">Quantity: 2</p>
                         <img src="img/item-1.png" class="card-img-top" alt="gardenia bread">
-                        <h5 class="card-title">Gardenia White Bread - Regular Size</h5>
+                        <a href="item1.html"><h5 class="card-title">Gardenia White Bread - Regular Size</h5></a>
                         <h6 class="card-subtitle text-muted">Breads & Pastries</h6>
                     </div>
                     <div class="card-footer d-flex justify-content-center align-items-center">
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"> <i class="fa fa-heart"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -131,9 +116,9 @@
                         <h6 class="card-subtitle text-muted">Beverages</h6>
                     </div>
                     <div class="card-footer d-flex justify-content-center align-items-center">
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"> <i class="fa fa-heart"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -148,9 +133,9 @@
                         <h6 class="card-subtitle text-muted">Toiletries</h6>
                     </div>
                     <div class="card-footer d-flex justify-content-center align-items-center">
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"> <i class="fa fa-heart"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -165,9 +150,9 @@
                         <h6 class="card-subtitle text-muted">Meat & Poultry</h6>
                     </div>
                     <div class="card-footer d-flex justify-content-center align-items-center">
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"> <i class="fa fa-heart"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                        <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                        <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -182,84 +167,15 @@
                     <h6 class="card-subtitle text-muted">Condiments</h6>
                 </div>
                 <div class="card-footer d-flex justify-content-center align-items-center">
-                    <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to favorites!');"> <i class="fa fa-heart"></i></a>
-                    <a class="btn ripple float-end" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                    <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                    <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                    <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                    <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
                 </div>
             </div>
         </div>
 
        <!--Add new Item-->
-       <div class="modal fade" tabindex="-1" id="testModal" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add Food</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col">
-                            <label class="text-muted">Upload Item Image</label>
-                        </div>
-                        <div class="col">
-                            <button type="button" class="btn btn-secondary btn-sm" onclick="uploadImg()">Upload Image</button>
-                        </div>
-                        <div class="col">
-                           <label class="text-muted"> Quantity</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" name="newItemQty" id="newItemQty">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label class="text-muted">Item Name</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" name="newItemName" id="newItemName">
-                        </div>
-                        <div class="col">
-                            <label class="text-muted">Minimum Quantity*</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" name="minQty" id="minQty">
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-3">
-                            <label class="text-muted">Description</label>
-                        </div>
-                        <div class="col-3">
-                            <input type="text" name="newItemDesc" id="newItemDesc">
-                        </div>
-                        <div class="col-6">
-                            <label class="fs-sm text-muted">Quantity before item is automatically added to your shopping list.*</label>
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col">
-                            <label class="text-muted">Category</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" name="newItemCat" id="newItemCat">
-                        </div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                    </div>
-                </div>
-    
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add Item</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal fade" id="add-item-modal">
+    <div class="modal fade" id="add-item-modal" aria-hidden ="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
       
@@ -272,24 +188,26 @@
                 <!-- Modal body -->
                 <div class="modal-body p-4 pb-1">
                     <form>
+
                         <div class="row mb-2">
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="itemName" class="form-label text-muted fw-light">Item Name</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="name">
+                            </div>
                             <div class="col-sm-4 col-lg-2">
                                 <label for="img" class="form-label text-muted fw-light">Upload Image</label>
                             </div>
                             <div class="col-sm-8 col-lg-4">
-                                <!-- choose file button is hiddent so "No File Chosen" doesn't show -->
-                                <div style="height: 0px; overflow: hidden;">
-                                    <input type="file" id="imgUpload">
+                                 <!-- choose file button is hiddent so "No File Chosen" doesn't show -->
+                                 <div style="height: 0px; overflow: hidden;">
+                                    <input type=file accept="image/*" id="imgUpload" onchange = "return validPicture()">
                                 </div>
                                  <button type="button" class="btn btn-secondary btn-sm" onclick="uploadImg()">Choose Image</button>
                             </div>
-                            <div class="col-sm-4 col-lg-2">
-                                <label for="qty" class="form-label text-muted fw-light">Quantity</label>
-                            </div>
-                            <div class="col-sm-8 col-lg-4">
-                                <input type="text" class="form-control" id="qty">
-                            </div>
                         </div>
+
                         <div class="row mb-2">
                             <div class="col-sm-4 col-lg-2">
                                 <label for="img" class="form-label text-muted fw-light">Description</label>
@@ -298,7 +216,7 @@
                                 <input type="text" class="form-control" id="img">
                             </div>
                             <div class="col-sm-4 col-lg-2">
-                                <label for="qty" class="form-label text-muted fw-light">Min. Quantity*</label>
+                                <label for="qty" class="form-label text-muted fw-light">Quantity</label>
                             </div>
                             <div class="col-sm-8 col-lg-4">
                                 <input type="text" class="form-control" id="qty">
@@ -310,6 +228,12 @@
                             </div>
                             <div class="col-sm-8 col-lg-4">
                                 <input type="text" class="form-control" id="img">
+                            </div>
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="qty" class="form-label text-muted fw-light">Min. Quantity*</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="minQty">
                             </div>
                         </div>
                         <div class="row mb-4">
