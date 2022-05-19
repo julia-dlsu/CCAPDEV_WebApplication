@@ -89,8 +89,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="shopping.html">Shopping List</a>
                         </li>
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Account</a>
+                        <li class="nav-item active dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Account</a>
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item active" href="profile.html">Profile</a></li>
                               <li><a class="dropdown-item" href="https://google.com">Logout</a></li>
@@ -108,7 +108,7 @@
                     <img src="img/profilepic.png" class="img-fluid mb-2">
                     <!-- choose file button is hiddent so "No File Chosen" doesn't show -->
                     <div style="height: 0px; overflow: hidden;">
-                        <input type="file" id="imgUpload">
+                        <input type="file" id="imgUpload" accept="image/*" id="pic" onchange = "return validPicture()">
                     </div>
                     <button type="button" class="btn btn-secondary btn-sm" onclick="uploadImg()">Upload Image</button>
                 </div>
