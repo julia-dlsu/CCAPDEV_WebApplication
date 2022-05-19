@@ -53,11 +53,11 @@
                     document.forms["changePassword"]["newpass"].style.backgroundColor = "red";
                     document.forms["changePassword"]["repass"].style.backgroundColor = "red";
                 }
-                if (pass3 == "") {
+                if (pass3 == "" || pass3 != "Ccapdev") {
                     document.forms["changePassword"]["curpass"].style.backgroundColor = "red";
                 }
         
-                if (pass1 == pass2 && pass3 != "") {
+                if (pass1 == pass2 && pass3 != "" && pass3 == "Ccapdev") {
                     valid = true;
                 }
 		
