@@ -1,4 +1,4 @@
-//separated this into another file since we might use this outside of Registration
+//separated this into another file since more than one file will use it
 function validPicture(){
 
 		var picInput = (document.Register.pic);
