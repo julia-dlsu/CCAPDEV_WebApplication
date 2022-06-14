@@ -17,9 +17,10 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-
+//not working
 exports.registerUser =(req, res)=>{
   const username =req.body.uname
+  //for testing only
   console.log(username)
   console.log(req.body.pass)
   console.log(req.body.email)
@@ -49,7 +50,7 @@ exports.registerUser =(req, res)=>{
 */
  
 };
-
+//working
 exports.loginUser =(req, res) => {
   
     var username = req.body.uname;
@@ -67,7 +68,6 @@ exports.loginUser =(req, res) => {
         bcrypt.compare(pw, user.pass, (err, result) => {
             // passwords match (result == true)
             if (result) {
-              // Update session object once matched!
               req.session.user = user._id;
               req.session.name = user.name;
           
