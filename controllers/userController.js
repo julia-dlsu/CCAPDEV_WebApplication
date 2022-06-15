@@ -7,7 +7,7 @@ const bcrypt= require('bcrypt');
 const bodyParser = require('body-parser');
 
 
-mongoose.connect('mongodb://localhost/testSess',
+mongoose.connect('mongodb://localhost/Accounts',
 {useNewURLParser: true, useUnifiedTopology: true});
 const app= express();
 
@@ -24,7 +24,7 @@ exports.registerUser =(req, res)=>{
   const Email =req.body.email
   console.log(username)
   console.log(Email)
-  /* //WILL NOT WORK WITH enctype = "multipart/form-data"
+  /* //WILL NOT WORK WITH enctype = "multipart/form-data" hence image upload is not functional
   Acct.findOne({$or: [{uname: username},{email:Email}]}, async function(err,result){
     if (err){
       req.flash('error_msg', 'Something happened! Please try again.');     
