@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 exports.registerUser =(req, res)=>{
-  const username =req.body.uname
-  const Email =req.body.email
+  var username =req.body.uname
+  var Email =req.body.email
   Acct.findOne({$or: [{uname: username},{email:Email}]}, async function(err,result){
 
     if (err){
