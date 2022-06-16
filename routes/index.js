@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-//feel free not to put auth yet in this function when testing this page to avoid annoyances
+//feel free not to put auth yet when testing this page or any page to avoid annoyances
 router.get('/',auth,(req, res) => {
     res.render('index'); 
   });
