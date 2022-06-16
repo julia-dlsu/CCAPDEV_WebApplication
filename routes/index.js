@@ -1,17 +1,18 @@
 const router = require('express').Router();
 
-//if a session does not exits it will redirect to login via auth
+//feel free not to put auth yet in this function when testing this page to avoid annoyances
 router.get('/',auth,(req, res) => {
     res.render('index'); 
   });
 
 /**  you may add more routers here*/
 
+//if a session does not exits it will redirect to login 
 function auth(req,res,next){
   if(req.session.user)
-     return next();
+    return next();
   else
-     return res.redirect('/login')
+    return res.redirect('/login')
 }
   
   module.exports= router
