@@ -2,7 +2,6 @@
 function validPicture(){
 
 		var picInput = (document.Register.pic);
-		//var picInput= $("#pic")
 		var pic = picInput.value;
 		var validType =  /(\.jpg|\.jpeg|\.png)$/i;
 		
@@ -15,4 +14,8 @@ function validPicture(){
 			return true;
 		}
 		
+}
+
+function uploadImg() {			
+	$('[name = "image"]').click();
 }
