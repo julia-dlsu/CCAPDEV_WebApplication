@@ -1,0 +1,61 @@
+button {
+    cursor: pointer;
+}
+
+.quantity, .itemName{
+    width: 100px;
+    text-align: center;
+}
+
+.buttons{
+    width:400px;
+}
+
+h2{
+    margin-top: 2px;
+}
+
+#addButton{
+    border: 1px solid black;
+    margin-left: 15px;
+    width: 150px;
+}
+
+tr,td{
+    height: 80px;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    height: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+button{
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.fs-sm {
+    font-size: 0.7rem;
+}
+
+h5 {
+    color: black; 
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}

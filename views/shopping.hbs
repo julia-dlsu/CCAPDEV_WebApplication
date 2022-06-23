@@ -1,0 +1,85 @@
+<!-- header w/ navigation-->
+{{> header }}
+
+<div class="container">
+	<!-- breadcrumb -->
+	<div class="row justify-content-center mt-3 p-2">
+    	<div class="col-sm-12 col-md-8">
+        	<nav style="--bs-breadcrumb-divider: '>';">
+            	<ol class="breadcrumb">
+                	<i class="fad fa-warehouse-alt"></i>
+                    	<li class="breadcrumb-item"><a href="/inventory">Current Inventory</a></li>
+                    	<li class="breadcrumb-item active">Shopping List</li>
+            	</ol>
+        	</nav>
+    	</div>
+	</div>
+
+	<!-- search bar -->
+	<div class="row justify-content-center mb-3">
+    	<div class="col-sm-12 col-md-8">
+        	<form class="d-flex mb-3">
+            	<input class="form-control me-2" type="search" placeholder="Search">
+            	<button class="btn btn-outline-success" type="submit">Search</button>
+				<button type="button" class="btn btn-outline-danger" id="clearButton" data-bs-toggle="modal" data-bs-target="#clearModal">Clear Items</button>
+        	</form>
+    	</div>
+	</div>
+
+	<!-- modal to confirm clear -->
+	<div class="modal fade" id="clearModal" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h5>Are you sure you want to clear all items?</h5>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- page content: Shopping List -->
+	<div class="container pb-5">
+    	<!-- items -->
+		{{#each shopping}}
+        	<div class="row border rounded justify-content-center">
+		    	<div class = "col-sm-12 col-md-2 text-center">
+			    	<img src="img/{{ image }}" ></img>
+		    	</div>
+		    	<div class="col-sm-12 col-md-6 p-4 pb-2">
+			    	<h5 class="card-title mb-3">{{ itemName }}</h5>
+                	<h6 class="card-subtitle text-muted">{{ itemCategory }}</h6>
+		    	</div>
+				<div class="col-sm-12 col-md-4 p-4 text-center">
+					<a class="btn plus"  href="javascript:void(0);" role="button" ><i class="fa fa-plus"></i></a>
+					<input type = "number" style= "width: 55px" min=0 class="quantity" value=1 readonly>
+					<a class="btn minus" href="javascript:void(0);" role="button"><i class="fa fa-minus"></i></a>
+					<a class="btn" href="javascript:void(0);" role="button"><i class="fa fa-trash"></i></a>
+				</div>
+	    	</div>
+    	{{/each}}
+	</div>
+</div>
+
+{{!-- for the add and minus buttons --}}
+<script>
+	var quan = $(".quantity");
+	var plus = $(".plus");
+	var minus = $(".minus");
+	for (var i = 0; i < quan.length; i++) {
+		plus[i].addEventListener('click', function(i) {
+			quan[i].value = Number(quan[i].value)+ 1;
+			i.preventDefault();
+		}.bind(null, i));
+				
+	    minus[i].addEventListener('click', function(i) {
+			if (quan[i].value>0){
+				quan[i].value = Number(quan[i].value)- 1;
+				i.preventDefault();
+			}
+		}.bind(null, i));
+	}
+</script>

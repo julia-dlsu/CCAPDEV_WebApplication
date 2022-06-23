@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- navbar title -->
+        <a class="navbar-brand" href="#home"><i class="fas fa-boxes ms-1 me-2"></i> Inventory App</a>
+        <!-- changes navbar into a toggle when screen is smaller -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- navbar contents -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {{ activeI }}" href="/inventory">Current Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ activeF }}" href="/favorites">Favorites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ activeS }}" href="/shopping">Shopping List</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Account</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

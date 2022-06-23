@@ -1,0 +1,115 @@
+<!-- header w/ navigation-->
+{{> header }}
+
+<div class="container">
+    <!-- breadcrumb -->
+    <div class="row justify-content-center mt-3 p-2">
+         <div class="col-sm-12 col-md-8">
+            <nav style="--bs-breadcrumb-divider: '>';">
+                <ol class="breadcrumb">
+                    <i class="fad fa-warehouse-alt"></i>
+                    <li class="breadcrumb-item"><a href="/inventory">Current Inventory</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- search bar -->
+    <div class="row justify-content-center mb-3">
+        <div class="col-sm-12 col-md-8">
+            <form class="d-flex mb-3">
+                <input class="form-control me-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button type="button" class="btn btn-light me-auto" id="addButton" data-bs-toggle="modal" data-bs-target="#add-item-modal">Add Item</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- page content: Inventory -->
+    <div class="containter">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
+            <!-- items -->
+            {{#each item}}
+                <div class="col mb-1">
+                    <div class="card h-80">
+                        <div class="card-body">
+                            <p class="fs-sm">Qty: {{ itemQty }}</p>
+                            <img src="images/{{ image }}" class="card-img-top" alt="{{ itemName }}">
+                            <a href="/item"><h5 class="card-title">{{ itemName }}</h5></a>
+                            <h6 class="card-subtitle text-muted">{{ itemCategory }}</h6>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center align-items-center">
+                            <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
+                            <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus"></i></a>
+                            <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <!--Add new Item-->
+    <div class="modal fade" id="add-item-modal">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Item</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+      
+                <!-- Modal body -->
+                <div class="modal-body p-4 pb-1">
+                    <form>
+                        <div class="row mb-2">
+                            <div class="col-sm-4 col-lg-2">
+                                label for="itemName" class="form-label text-muted fw-light">Item Name</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="img" class="form-label text-muted fw-light">Upload Image</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <div style="overflow: hidden;">
+                                    <input type="file" id="imgUpload" accept="image/*" id="pic" onchange = "return validPicture()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="img" class="form-label text-muted fw-light">Description</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="img">
+                            </div>
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="qty" class="form-label text-muted fw-light">Quantity</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="qty">
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="img" class="form-label text-muted fw-light">Category</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="img">
+                            </div>
+                        </div>
+                        <!-- modal footer -->
+                        <div class="row justify-content-end mb-3">
+                            <div class="col-sm-4 col-lg-2 text-end">
+                                <input type = submit value = "Confirm" class="btn btn-primary btn-sm">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
