@@ -25,7 +25,7 @@ app.engine("hbs", exphbs.engine({
 
 // NECESSARY ROUTING METHODS
 app.get("/", function(req, res){
-    res.send("Rooster Bradshaw is the hottest person alive <3");
+    res.send("<3");
 });
 
 // loads inventory page
@@ -107,7 +107,6 @@ app.get("/item", function(req, res) {
                 itemCategory: "Breads & Pastries",
                 itemDescription: "Gardenia white bread slices is a staple for breakfast and many more foods in a household. This is mostly used for tuna and nutella sandwiches.",
                 itemQty: 3,
-                itemMqty: 2
             }
     });
 });
