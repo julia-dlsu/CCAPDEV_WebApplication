@@ -1,0 +1,20 @@
+.container {
+    max-height: 15rem;
+    max-width: 40rem;
+}
+
+img {
+    max-height: 10rem;
+}
+
+div {
+    position: relative;
+}
+
+.btn-outline-danger {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 1rem;
+    margin-right: 3rem;
+}

@@ -2,13 +2,6 @@ button {
     cursor: pointer;
 }
 
-.taskbar{
-    position: sticky;
-	height: auto;
-	background-color: #000000;
-	width: 45%;
-}
-
 .quantity, .itemName{
     width: 100px;
     text-align: center;
@@ -28,10 +21,6 @@ h2{
     width: 150px;
 }
 
-#imgUpload{
-    height: 0px; 
-    overflow: hidden;
-}
 tr,td{
     height: 80px;
 }

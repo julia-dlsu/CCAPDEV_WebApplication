@@ -2,7 +2,6 @@
 function validPicture(){
 
 		var picInput = (document.Register.pic);
-		//var picInput= $("#pic")
 		var pic = picInput.value;
 		var validType =  /(\.jpg|\.jpeg|\.png)$/i;
 		

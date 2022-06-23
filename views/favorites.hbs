@@ -1,0 +1,45 @@
+<!-- breadcrumb -->
+<div class="row justify-content-center mt-3 p-2">
+    <div class="col-sm-12 col-md-8">
+        <nav style="--bs-breadcrumb-divider: '>';">
+            <ol class="breadcrumb">
+                <i class="fad fa-warehouse-alt"></i>
+                <li class="breadcrumb-item"><a href="/inventory">Current Inventory</a></li>
+                <li class="breadcrumb-item active">Favorites</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<!-- search bar -->
+<div class="row justify-content-center mb-3">
+    <div class="col-sm-12 col-md-8">
+        <form class="d-flex mb-3">
+            <input class="form-control me-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+<!-- page content: Favorites -->
+<div class="container"> 
+    <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
+        <!-- items -->
+        {{#each favorite}}
+            <div class="col mb-1">
+                <div class="card h-100">
+                    <img src="img/{{ image }}" class="card-img-top" alt="{{ itemName }}">
+                    <div class="card-body">
+                        <!-- makes the card clickable -->
+                        <a href="/item"><h5 class="card-title">{{ itemName }}</h5></a>
+                        <h6 class="card-subtitle text-muted">{{ itemCategory }}</h6>
+                    </div>
+                    <div class="card-footer"> 
+                        <p class="card-text float-start qty">Qty: {{ itemQty }}</p>
+                        <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
