@@ -82,13 +82,12 @@
 
 		<div class="form-group">		
 			<input class = "form-control" type=submit  value ="Register" />
-		</div>
-		<div>
+
 			{{#if this.error_msg}}
-                {{this.error_msg}}
+                <p style="color: red; text-align: center">{{this.error_msg}}</p>
 			{{/if}}
 		</div>
-			
+		
 		
 	</form>
 		<div class="form-group">Have an account already? <a href = "/login"> Login</a></div>

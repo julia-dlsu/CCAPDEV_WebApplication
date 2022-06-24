@@ -43,6 +43,7 @@ exports.registerUser =(req, res)=>{
           })
             
         })
+        req.flash('msg_success', 'Account Created Please Login');  
         res.redirect('/login');
       }catch {
         res.redirect('/register');
