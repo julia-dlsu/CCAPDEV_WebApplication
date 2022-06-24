@@ -76,7 +76,9 @@ exports.loginUser = (req, res) => {
           if (result) {
             //Update session object once matched!
             req.session.user = user._id;
-            req.session.name = user.name;
+            req.session.uname =user.uname;
+            req.session.email = user.email;
+            req.session.image = user.image;
             console.log(req.session);
           
             res.redirect('/');
