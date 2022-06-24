@@ -1,4 +1,4 @@
-const Acct = require('../database/models/Acct');
+const Acct = require('../models/Acct');
 
 const fileUpload = require('express-fileupload');
 const express = require('express');
@@ -7,8 +7,6 @@ const bcrypt= require('bcrypt');
 const bodyParser = require('body-parser');
 
 const path = require('path');
-mongoose.connect('mongodb://localhost/Accounts',
-{useNewURLParser: true, useUnifiedTopology: true});
 const app= express();
 app.use(express.static('public'));
 
@@ -18,6 +16,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// REGISTER
 exports.registerUser =(req, res)=>{
   var username =req.body.uname
   var Email =req.body.email
@@ -58,6 +57,7 @@ exports.registerUser =(req, res)=>{
   })
 }
 
+// LOGIN
 exports.loginUser = (req, res) => {
     var username = req.body.uname;
     var Email =req.body.uname;
@@ -98,6 +98,7 @@ exports.loginUser = (req, res) => {
     }})
 };
 
+// LOGOUT
 exports.logoutUser = (req, res) => {
     if (req.session) {
       req.session.destroy(() => {
@@ -105,4 +106,17 @@ exports.logoutUser = (req, res) => {
         res.redirect('/login');
       });
     }
+};
+
+// PROFILE: renders profile page for current session
+exports.getProfile = async (req, res) => {
+  console.log(req.session);
+  res.render('profile', {
+    title: req.session.name + " | Profile",
+    style: "profile.css",
+    script: ["profile.js", "pictureValidation.js"],
+    userName: req.session.name,
+    userEmail: req.session.email,
+    userImage: req.session.image
+  });
 };
