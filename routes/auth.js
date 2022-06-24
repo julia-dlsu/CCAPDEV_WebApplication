@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
 
-router.get('/login',NotAuth,(req, res) => {
+// render login page
+router.get('/login', NotAuth, (req, res) => {
     res.render('login', {
         title: "Login",
         style: "logreg.css",
@@ -9,7 +10,8 @@ router.get('/login',NotAuth,(req, res) => {
     });
 });
 
-router.get('/register',NotAuth,(req, res) => {
+// render register page
+router.get('/register' ,NotAuth, (req, res) => {
     res.render('register', {
         title: "Register",
         style: "logreg.css",
@@ -18,18 +20,20 @@ router.get('/register',NotAuth,(req, res) => {
 });
 
 //if a session exist it will redirect to index
-function NotAuth(req,res,next){
+function NotAuth(req, res, next){
   if(req.session.user)
      res.redirect('/')
   else
      next()
 }
-  
-router.post('/register',userController.registerUser);
 
-router.post('/login',userController.loginUser);
-
+// for user registration
+router.post('/register', userController.registerUser);
+// for user login
+router.post('/login', userController.loginUser);
+// for user logout
 router.get('/logout', userController.logoutUser);
-
+// for loading currenst session profile page
+router.get('/profile', userController.getProfile);
 
 module.exports = router;

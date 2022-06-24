@@ -7,15 +7,15 @@
         <!-- profile details -->
         <div class="row justify-content-center shadow rounded">
             <div class="col-5 p-3 text-center">
-            <img src="img/{{ profile.image }}" class="img-fluid mb-2">
+            <img src="img/{{ userImage }}" class="img-fluid mb-2">
                 <div style="height: 0px; overflow: hidden;">
 				    <input type=file accept="image/*" name="image" onchange = "return validPicture()" required />
 			    </div>
                 <button type="button" class="btn btn-secondary btn-sm" onclick="uploadImg()">Upload Image</button>
             </div>
             <div class="col-7 pt-5 ps-4">
-                <h2 class="card-title">{{ profile.userName }}</h5>
-                <h6 class="card-subtitle text-muted fw-light fst-italic">{{ profile.userEmail }}</h6>
+                <h2 class="card-title">{{ userName }}</h5>
+                <h6 class="card-subtitle text-muted fw-light fst-italic">{{ userEmail }}</h6>
                 <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</button>
             </div>
         </div>

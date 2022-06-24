@@ -19,6 +19,9 @@ const MongoStore = require('connect-mongo')(session);
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 
+const db = require(`./models/db.js`);
+db.connect();
+
 // set handlebars as the apps view engine
 app.set("view engine", "hbs");
 app.engine("hbs", exphbs.engine({
@@ -53,5 +56,6 @@ var server = app.listen(3000, function() {
     console.log("Node server is running at port 3000....");
 });
 
-app.use('/', authRouter); // Login/registration routes
+// Login/registration routes
+app.use('/', authRouter);
 app.use('/', indexRouter); 
