@@ -4,7 +4,7 @@ const fileUpload = require('express-fileupload');
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt= require('bcrypt');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
 const fs = require('fs');
 
@@ -13,8 +13,8 @@ const app= express();
 app.use(express.static('public'));
 
 app.use(fileUpload()); // for fileuploading
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+app.use(express.json());
+app.use(express.urlencoded({
   extended: true
 }));
 
@@ -33,16 +33,12 @@ exports.registerUser =(req, res)=>{
       try {
         const hashedPassword = await bcrypt.hash(req.body.pass, 10);
         const{image}=req.files;
-        var filename= username+'_profile.png';
-        var profPath = 'public/images/profile';
         
+        var filename= username+'_profile.png';
 
-        image.mv(path.resolve(profPath,image.name),function(err){
+          image.mv(path.resolve('public/images/profile',filename),function(err){
           if (err) throw err;
-
-          /**renames the file in the profile folder */
-          fs.renameSync(path.resolve(profPath,image.name), path.resolve(profPath,filename));
-
+          
           Acct.create({
             name: req.body.name,
             uname:username,
@@ -52,7 +48,7 @@ exports.registerUser =(req, res)=>{
           })
             
         })
-        req.flash('success_msg', 'Account Created Please Login');  
+        req.flash('success_msg', 'Account Created! Please Login');  
         res.redirect('/login');
       }catch {
         req.flash('error_msg','Something happened! Please try again.');
