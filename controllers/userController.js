@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const bcrypt= require('bcrypt');
 const bodyParser = require('body-parser');
 
+const fs = require('fs');
+
 const path = require('path');
 const app= express();
 app.use(express.static('public'));
@@ -30,20 +32,27 @@ exports.registerUser =(req, res)=>{
     if(!result){
       try {
         const hashedPassword = await bcrypt.hash(req.body.pass, 10);
-        const{image}=req.files
-        image.mv(path.resolve('public/images/profile/',image.name),function(err){
+        const{image}=req.files;
+        var filename= username+'_profile.png';
+        var profPath = 'public/images/profile';
+        
+
+        image.mv(path.resolve(profPath,image.name),function(err){
           if (err) throw err;
-          
+
+          /**renames the file in the profile folder */
+          fs.renameSync(path.resolve(profPath,image.name), path.resolve(profPath,filename));
+
           Acct.create({
             name: req.body.name,
-            uname: username,
+            uname:username,
             email: Email,
             pass: hashedPassword,
-            image: '/images/profile/'+ image.name 
+            image:  filename,
           })
             
         })
-        req.flash('msg_success', 'Account Created Please Login');  
+        req.flash('success_msg', 'Account Created Please Login');  
         res.redirect('/login');
       }catch {
         req.flash('error_msg','Something happened! Please try again.');
