@@ -31,15 +31,15 @@ exports.registerUser =(req, res)=>{
       try {
         const hashedPassword = await bcrypt.hash(req.body.pass, 10);
         const{image}=req.files
-        image.mv(path.resolve('public/images/profile',image.name),function(err){
+        image.mv(path.resolve('public/images/profile/',image.name),function(err){
           if (err) throw err;
           
           Acct.create({
             name: req.body.name,
-            uname:username,
+            uname: username,
             email: Email,
             pass: hashedPassword,
-            image: '/images/'+ image.name 
+            image: '/images/profile/'+ image.name 
           })
             
         })
@@ -78,7 +78,8 @@ exports.loginUser = (req, res) => {
           if (result) {
             //Update session object once matched!
             req.session.user = user._id;
-            req.session.uname =user.uname;
+            req.session.name = user.name;
+            req.session.uname = user.uname;
             req.session.email = user.email;
             req.session.image = user.image;
             console.log(req.session);
@@ -114,13 +115,18 @@ exports.logoutUser = (req, res) => {
 
 // PROFILE: renders profile page for current session
 exports.getProfile = async (req, res) => {
-  console.log(req.session);
   res.render('profile', {
     title: req.session.name + " | Profile",
     style: "profile.css",
     script: ["profile.js", "pictureValidation.js"],
     userName: req.session.name,
+    userUName: req.session.uname,
     userEmail: req.session.email,
     userImage: req.session.image
   });
+};
+
+// PROFILE: change profile picture for current session
+exports.changeProfilePic = async (req, res) => {
+  // insert update picture mechanisms here
 };

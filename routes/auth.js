@@ -35,5 +35,7 @@ router.post('/login', userController.loginUser);
 router.get('/logout', userController.logoutUser);
 // for loading currenst session profile page
 router.get('/profile', userController.getProfile);
+// for changing profile picture
+router.get('/change-pic', userController.changeProfilePic);
 
 module.exports = router;

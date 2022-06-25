@@ -7,20 +7,33 @@
         <!-- profile details -->
         <div class="row justify-content-center shadow rounded">
             <div class="col-5 p-3 text-center">
-            <img src="img/{{ userImage }}" class="img-fluid mb-2">
-                <div style="height: 0px; overflow: hidden;">
-				    <input type=file accept="image/*" name="image" onchange = "return validPicture()" required />
-			    </div>
-                <button type="button" class="btn btn-secondary btn-sm" onclick="uploadImg()">Upload Image</button>
+            <img src="../{{ userImage }}" class="img-fluid mb-2">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#changeModal">Upload Image</button>
             </div>
             <div class="col-7 pt-5 ps-4">
                 <h2 class="card-title">{{ userName }}</h5>
+                <h5 class="card-subtitle mb-3">{{ userUName }}</h6>
                 <h6 class="card-subtitle text-muted fw-light fst-italic">{{ userEmail }}</h6>
                 <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</button>
             </div>
         </div>
 
-        <!-- modal to confirm clear -->
+        <!-- modal to change picture -->
+	    <div class="modal fade" id="changeModal" tabindex="-1">
+		    <div class="modal-dialog modal-dialog-centered">
+			    <div class="modal-content">
+				    <div class="modal-body">
+					    <h5>Change Profile Picture</h5>
+                        <form name = "ChangePic" action="/change-pic" method = "post" enctype = "multipart/form-data"></form>
+				            <input type=file class="mt-2" accept="image/*" name="image" onchange = "return validPicture()" required /><br>
+                            <input class = "btn btn-primary mt-3" data-bs-dismiss="modal" type=submit  value = "Save" />
+                        </form>
+			        </div>
+			    </div>
+		    </div>
+	    </div>
+
+        <!-- modal to confirm delete account -->
 	    <div class="modal fade" id="deleteModal" tabindex="-1">
 		    <div class="modal-dialog modal-dialog-centered">
 			    <div class="modal-content">
@@ -37,7 +50,7 @@
 
         <!-- password settings -->
         <div class="row shadow mt-3 rounded">
-            <div class="col-sm-8 col-md-6 p-3 ps-4 py-4">
+            <div class="col-sm-8 col-md-6 p-3 ps-4 py-3">
                 <h4 class="card-title mb-2">Update Password</h5>
                 <form name="changePassword">
                     <!-- current password -->
