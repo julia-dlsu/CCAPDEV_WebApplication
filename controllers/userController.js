@@ -1,3 +1,4 @@
+const db = require('../models/db.js');
 const Acct = require('../models/Acct');
 
 const fileUpload = require('express-fileupload');
@@ -32,8 +33,8 @@ exports.registerUser =(req, res)=>{
     if(!result){
       try {
         const hashedPassword = await bcrypt.hash(req.body.pass, 10);
-        const{image}=req.files;
-        var filename= username+'_profile.png';
+        const{image} = req.files;
+        var filename = username+'_profile.png';
         var profPath = 'public/images/profile';
         
 
@@ -137,5 +138,46 @@ exports.getProfile = async (req, res) => {
 
 // PROFILE: change profile picture for current session
 exports.changeProfilePic = async (req, res) => {
-  // insert update picture mechanisms here
+  console.log("inside change profile pic");
+  const{image} = req.files;
+  var filename = req.session.uname + '_profile.png';
+  var profPath = 'public/images/profile';
+
+  await image.mv(path.resolve(profPath,image.name),function(err){
+    if (err) throw err;
+
+    /**renames the file in the profile folder */
+    fs.renameSync(path.resolve(profPath,image.name), path.resolve(profPath,filename));
+
+    //update the image of current user
+    db.updateOne(Acct, {_id: req.session.user}, {image: filename}, function() {
+      res.redirect('/profile');
+    });
+  });
+};
+
+// PROFILE: check if password is correct
+exports.checkPass = function (req, res) {
+  const curr = req.body.currpass;
+  
+  Acct.findById(req.session.user, (error, user) => {
+    if (error){
+      console.log(error);
+    }
+    else {
+      bcrypt.compare(curr, user.pass, function (err, result) {
+        res.send(result);
+      });
+    }
+  });
+};
+
+// PROFILE: update password
+exports.changePass = function (req, res) {
+  bcrypt.hash(req.body.newpass, 10).then(function(hash) {
+    // update the password of the current user in the DB
+    db.updateOne(Acct, {_id: req.session.user}, {pass: hash}, function() {
+      res.redirect('/profile');
+    });
+  });
 };
