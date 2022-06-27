@@ -3,6 +3,7 @@ const userController = require('../controllers/userController');
 
 //feel free not to put auth yet when testing this page or any page to avoid annoyances
 // this '/' is temporary and should be called using controller
+// for inventory etc, remember to save the pictures under images/items
 router.get('/', auth, (req, res) => {
   res.render("inventory", {
     title: "Inventory",
