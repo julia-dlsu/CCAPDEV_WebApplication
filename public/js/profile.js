@@ -5,7 +5,6 @@ $(document).ready(function() {
         var cp = $('#curpass').val();
         var np = $('#newpass').val();
         var rp = $('#repass').val();
-        var match = false;
 
         if (cp == "" || np == "" || rp == ""){
             // error message

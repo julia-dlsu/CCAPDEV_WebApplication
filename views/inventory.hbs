@@ -61,50 +61,47 @@
       
                 <!-- Modal body -->
                 <div class="modal-body p-4 pb-1">
-                    <form>
+                    <form name = "AddItem" action="./add-item" method = "POST" enctype = "multipart/form-data">
                         <div class="row mb-2">
                             <div class="col-sm-4 col-lg-2">
-                                <label for="itemName" class="form-label text-muted fw-light">Item Name</label>
+                                <label for="name" class="form-label text-muted fw-light">Item Name</label>
                             </div>
                             <div class="col-sm-8 col-lg-4">
-                                <input type="text" class="form-control" id="name">
+                                <input type="text" class="form-control" id="name" name="name">
                             </div>
                             <div class="col-sm-4 col-lg-2">
-                                <label for="img" class="form-label text-muted fw-light">Upload Image</label>
+                                <label for="image" class="form-label text-muted fw-light">Upload Image</label>
                             </div>
                             <div class="col-sm-8 col-lg-4">
-                                <div style="overflow: hidden;">
-                                    <input type="file" id="imgUpload" accept="image/*" id="pic" onchange = "return validPicture()">
-                                </div>
+                                <input type=file accept="image/*" id="image" name="image" onchange = "return validPicture()" required /><br>
                             </div>
                         </div>
-
                         <div class="row mb-2">
                             <div class="col-sm-4 col-lg-2">
-                                <label for="img" class="form-label text-muted fw-light">Description</label>
+                                <label for="description" class="form-label text-muted fw-light">Description</label>
                             </div>
                             <div class="col-sm-8 col-lg-4">
-                                <input type="text" class="form-control" id="img">
+                                <input type="text" class="form-control" id="description" name="description">
                             </div>
                             <div class="col-sm-4 col-lg-2">
-                                <label for="qty" class="form-label text-muted fw-light">Quantity</label>
+                                <label for="quantity" class="form-label text-muted fw-light">Quantity</label>
                             </div>
                             <div class="col-sm-8 col-lg-4">
-                                <input type="text" class="form-control" id="qty">
+                                <input type="text" class="form-control" id="qty" name="quantity">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col-sm-4 col-lg-2">
-                                <label for="img" class="form-label text-muted fw-light">Category</label>
+                                <label for="category" class="form-label text-muted fw-light">Category</label>
                             </div>
                             <div class="col-sm-8 col-lg-4">
-                                <input type="text" class="form-control" id="img">
+                                <input type="text" class="form-control" id="category" name="category">
                             </div>
                         </div>
                         <!-- modal footer -->
                         <div class="row justify-content-end mb-3">
                             <div class="col-sm-4 col-lg-2 text-end">
-                                <input type = submit value = "Confirm" class="btn btn-primary btn-sm">
+                                <input type = submit value = "Confirm" id="submit" class="btn btn-primary btn-sm">
                             </div>
                         </div>
                     </form>
