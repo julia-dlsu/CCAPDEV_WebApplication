@@ -11,7 +11,7 @@ router.get('/login', NotAuth, (req, res) => {
 });
 
 // render register page
-router.get('/register' ,NotAuth, (req, res) => {
+router.get('/register', NotAuth, (req, res) => {
     res.render('register', {
         title: "Register",
         style: "logreg.css",

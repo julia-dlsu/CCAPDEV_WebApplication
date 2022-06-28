@@ -26,25 +26,11 @@
     </div>
 
     <!-- page content: Inventory -->
-    <div class="containter">
-        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
+    <div class="container">
+        <div id="inventory-container" class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
             <!-- items -->
-            {{#each item}}
-                <div class="col mb-1">
-                    <div class="card h-80">
-                        <div class="card-body">
-                            <p class="fs-sm">Qty: {{ itemQty }}</p>
-                            <img src="../images/items/{{ image }}" class="card-img-top" alt="{{ itemName }}">
-                            <a href="/item"><h5 class="card-title">{{ itemName }}</h5></a>
-                            <h6 class="card-subtitle text-muted">{{ itemCategory }}</h6>
-                        </div>
-                        <div class="card-footer d-flex justify-content-center align-items-center">
-                            <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to favorites!');"><i class='fas fa-heart'></i></a>
-                            <a class="btn ripple" href="#" role="button" onclick="alert('Item has been added to shopping list!')"><i class="fa fa-cart-plus"></i></a>
-                            <a class="btn ripple" href="#" role="button"><i class="fa fa-trash"></i></a>
-                        </div>
-                    </div>
-                </div>
+            {{#each items}}
+                {{>card}}
             {{/each}}
         </div>
     </div>
@@ -61,7 +47,7 @@
       
                 <!-- Modal body -->
                 <div class="modal-body p-4 pb-1">
-                    <form name = "AddItem" action="./add-item" method = "POST" enctype = "multipart/form-data">
+                    <form id="add-item-form" enctype="multipart/form-data">
                         <div class="row mb-2">
                             <div class="col-sm-4 col-lg-2">
                                 <label for="name" class="form-label text-muted fw-light">Item Name</label>
@@ -73,7 +59,7 @@
                                 <label for="image" class="form-label text-muted fw-light">Upload Image</label>
                             </div>
                             <div class="col-sm-8 col-lg-4">
-                                <input type=file accept="image/*" id="image" name="image" onchange = "return validPicture()" required /><br>
+                                <input type="file" accept="image/*" id="image" name="image" onchange="return validPicture()" required /><br>
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -101,7 +87,7 @@
                         <!-- modal footer -->
                         <div class="row justify-content-end mb-3">
                             <div class="col-sm-4 col-lg-2 text-end">
-                                <input type = submit value = "Confirm" id="submit" class="btn btn-primary btn-sm">
+                                <input type="submit" value = "Confirm" id="submit" class="btn btn-primary btn-sm">
                             </div>
                         </div>
                     </form>

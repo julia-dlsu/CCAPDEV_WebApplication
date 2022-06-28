@@ -1,35 +1,60 @@
-const db = require('../models/db.js');
-const Acct = require('../models/Inventory');
-
-const fileUpload = require('express-fileupload');
-const express = require('express');
-const mongoose = require('mongoose');
-
+const Inventory = require('../models/Inventory')
+const path = require('path')
 const fs = require('fs');
 
-const path = require('path');
-const app= express();
-app.use(express.static('public'));
+const controller = {
+    getInventory: async function (req, res) {
+        try {
+            const items = await Inventory.find().lean().exec()
+            res.render("inventory", {
+                title: "Inventory",
+                style: "inventory.css",
+                script: ["pictureValidation.js", 'inventory.js'],
+                activeI: "active",
+                items,
+            })
+        } catch (err) {
+            console.error(err)
+            res.status(500)
+        }
+    },
 
-app.use(fileUpload()); // for fileuploading
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
-}));
+    addItem: async (req, res) => {
+        const name = req.body.name
 
-exports.getInventory = function (req, res) {
-  // TODO: load inventory items from DB
+        try {
+            const result = await Inventory.findOne({ name }).exec()
+            console.log(result);
+            if (result) throw Error('ITEM ALREADY EXSISTS')
 
-  res.render("inventory", {
-    title: "Inventory",
-    style: "inventory.css",
-    script: ["pictureValidation.js"],
-    activeI: "active"
-    // TODO: inventory items to render here
-  });
-};
+            const { img: image } = req.files
+            var filename= req.session.uname+'-'+image.name;
+            var itemPath = 'public/images/items';
 
-exports.addItem = async (req, res) => {
-    console.log(req.body.name);
-    // TODO: add item mechanisms here
-};
+            console.log(filename);
+            await image.mv(path.resolve(itemPath,filename));
+            
+            const item = {
+                name: req.body.name,
+                image: filename,
+                description: req.body.description,
+                quantity: req.body.qty,
+                category: req.body.category,
+                owner: req.session.user
+            }
+
+            await Inventory.create(item)
+
+            res.render('partials/card', {
+                layout: false,
+                ...item
+            });
+
+        } catch (err) {
+            console.error(err);
+            res.status(500)
+        }
+    }
+}
+
+module.exports = controller

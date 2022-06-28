@@ -20,7 +20,7 @@ app.use(express.urlencoded({
 }));
 
 // REGISTER
-exports.registerUser = (req, res)=>{
+exports.registerUser = async (req, res)=>{
   var username =req.body.uname
   var Email =req.body.email
   Acct.findOne({$or: [{uname: username},{email:Email}]}, async function(err,result){

@@ -1,23 +1,14 @@
 // All imports needed here
 const express = require('express');
-//const path = require('path');
 const exphbs = require('express-handlebars');
-const handlebars = require('handlebars');
-const bodyParser = require('body-parser');
-//const mongoose = require('./models/connection');
-const app= express();
 const fileUpload = require('express-fileupload');
-
-app.use(fileUpload()); // for fileuploading
-
 const session = require('express-session');
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
-
 const MongoStore = require('connect-mongo')(session);
-// Routes imports
-const authRouter = require('./routes/auth');
-const indexRouter = require('./routes/index');
+
+const app = express();
+app.use(fileUpload()); // for fileuploading
 
 const db = require(`./models/db.js`);
 db.connect();
@@ -30,8 +21,8 @@ app.engine("hbs", exphbs.engine({
 }));
 
 // Configuration for handling API endpoint data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+app.use(express.json());
+app.use(express.urlencoded({
   extended: true
 }));
 
@@ -52,10 +43,17 @@ app.use((req, res, next) => {
     res.locals.error_msg = req.flash('error_msg');
     next();
   });
-var server = app.listen(3000, function() {
-    console.log("Node server is running at port 3000....");
-});
 
+// Routes imports
+const authRouter = require('./routes/auth');
+const indexRouter = require('./routes/index');
+
+'/add-item'
+'REST => GET, POST, PUT, DELETE, PATCH'
 // Login/registration routes
 app.use('/', authRouter);
-app.use('/', indexRouter); 
+app.use('/', indexRouter);
+
+app.listen(3000, function() {
+  console.log("Node server is running at http://localhost:3000....");
+});
