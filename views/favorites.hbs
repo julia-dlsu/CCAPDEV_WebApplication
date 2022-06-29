@@ -8,7 +8,7 @@
             <nav style="--bs-breadcrumb-divider: '>';">
                 <ol class="breadcrumb">
                     <i class="fad fa-warehouse-alt"></i>
-                    <li class="breadcrumb-item"><a href="/inventory">Current Inventory</a></li>
+                    <li class="breadcrumb-item"><a href="/">Current Inventory</a></li>
                     <li class="breadcrumb-item active">Favorites</li>
                 </ol>
             </nav>
@@ -29,17 +29,17 @@
     <div class="container"> 
         <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
             <!-- items -->
-            {{#each favorite}}
+            {{#each favorites}}
                 <div class="col mb-1">
                     <div class="card h-100">
-                        <img src="../images/items/{{ image }}" class="card-img-top" alt="{{ itemName }}">
+                        <img src="../images/items/{{ this.image }}" class="card-img-top" alt="{{ this.name }}">
                         <div class="card-body">
                             <!-- makes the card clickable -->
-                            <a href="/item"><h5 class="card-title">{{ itemName }}</h5></a>
-                            <h6 class="card-subtitle text-muted">{{ itemCategory }}</h6>
+                            <a href="/this._id"><h5 class="card-title">{{ this.name }}</h5></a>
+                            <h6 class="card-subtitle text-muted">{{ this.category }}</h6>
                         </div>
                         <div class="card-footer"> 
-                            <p class="card-text float-start qty">Qty: {{ itemQty }}</p>
+                            <p class="card-text float-start qty">Qty: {{ this.quantity }}</p>
                             <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
                         </div>
                     </div>

@@ -1,6 +1,5 @@
 const Inventory = require('../models/Inventory')
 const path = require('path')
-const fs = require('fs');
 
 const controller = {
     getInventory: async function (req, res) {
