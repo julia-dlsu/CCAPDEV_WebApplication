@@ -20,7 +20,7 @@ app.use(express.urlencoded({
 }));
 
 // REGISTER
-exports.registerUser = async (req, res)=>{
+exports.registerUser =(req, res)=>{
   var username =req.body.uname
   var Email =req.body.email
   Acct.findOne({$or: [{uname: username},{email:Email}]}, async function(err,result){
@@ -134,6 +134,7 @@ exports.getProfile = async (req, res) => {
 
 // PROFILE: change profile picture for current session
 exports.changeProfilePic = async (req, res) => {
+  console.log("inside change profile pic");
   const{image} = req.files;
   var filename = req.session.uname + '_profile.png';
   var profPath = 'public/images/profile';

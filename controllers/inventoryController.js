@@ -1,59 +1,58 @@
-const Inventory = require('../models/Inventory')
-const path = require('path')
+const db = require('..//models/db.js');
+const item = require('../models/item');
+const Acct = require('../models/Acct');
 
-const controller = {
-    getInventory: async function (req, res) {
-        try {
-            const items = await Inventory.find().lean().exec()
-            res.render("inventory", {
-                title: "Inventory",
-                style: "inventory.css",
-                script: ["pictureValidation.js", 'inventory.js'],
-                activeI: "active",
-                items,
-            })
-        } catch (err) {
-            console.error(err)
-            res.status(500)
+const fileUpload = require('express-fileupload');
+const express = require('express');
+const mongoose = require('mongoose');
+
+
+const bodyParser = require('body-parser');
+
+const path = require('path');
+
+const app= express();
+app.use(express.static('public'));
+
+app.use(fileUpload()); // for fileuploading
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+exports.addItem = (req, res) =>{
+    var name = req.body.itemName
+    console.log(req);
+    item.findOne({$or : [{itemName : name}]}, async function(err,result){
+
+        if(err){
+            req.flash('errMessage',"Please try again.");
+            res.redirect('/inventory');
         }
-    },
+        if(!result){
+            try{
+                const{image} = req.files
+                image.mv(path.resolve('public/images/inventory',image.name), function(err){
+                    if(err){
+                        req.flash('error_msg', 'Something happened! Please try again.');     
+                        res.redirect('/inventory');
+                    }
+                    addItem.create({
+                        ...req.body,        
+                        image:'/images/'+image.name
+                    })
 
-    addItem: async (req, res) => {
-        const name = req.body.name
-
-        try {
-            const result = await Inventory.findOne({ name }).exec()
-            console.log(result);
-            if (result) throw Error('ITEM ALREADY EXSISTS')
-
-            const { img: image } = req.files
-            var filename= req.session.uname+'-'+image.name;
-            var itemPath = 'public/images/items';
-
-            console.log(filename);
-            await image.mv(path.resolve(itemPath,filename));
-            
-            const item = {
-                name: req.body.name,
-                image: filename,
-                description: req.body.description,
-                quantity: req.body.qty,
-                category: req.body.category,
-                owner: req.session.user
+                })
+                res.redirect('/inventory');
             }
-
-            await Inventory.create(item)
-
-            res.render('partials/card', {
-                layout: false,
-                ...item
-            });
-
-        } catch (err) {
-            console.error(err);
-            res.status(500)
+            catch{
+                res.redirect('/inventory');
+            }
         }
-    }
+        else{
+            req.flash('errMessage',"Item already exists!");
+            res.redirect('/inventory');
+        }
+    })
+    console.log("Haha");
 }
-
-module.exports = controller
