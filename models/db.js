@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const UserModel = require('./Acct.js');
 const InventoryModel = require('./Inventory.js');
-
+const FavoritesModel = require('./Favorites.js');
+const ShoppingListModel = require('./ShoppingList.js');
 
 const url = 'mongodb://localhost:27017/ccapdev-MP';
 

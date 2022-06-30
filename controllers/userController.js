@@ -1,5 +1,8 @@
 const db = require('../models/db.js');
 const Acct = require('../models/Acct');
+const Inventory = require('../models/Inventory')
+const Favorite = require('../models/Favorites')
+const ShoppingList = require('../models/ShoppingList')
 
 const fileUpload = require('express-fileupload');
 const express = require('express');
@@ -174,5 +177,23 @@ exports.changePass = function (req, res) {
     db.updateOne(Acct, {_id: req.session.user}, {pass: hash}, function() {
       res.redirect('/profile');
     });
+  });
+};
+
+// PROFILE: delete account
+exports.deleteAccount = async (req, res) => {
+  user = {owner: req.session.uname};
+
+  await Favorite.deleteMany(user); // delete favorites
+  await ShoppingList.deleteMany(user); // delete shopping list
+  await Inventory.deleteMany(user); // delete inventory
+
+  // delete account
+  await Acct.deleteOne({uname: req.session.uname});
+
+  // go to login
+  req.session.destroy(() => {
+    res.clearCookie('connect.sid');
+    res.redirect('/login');
   });
 };

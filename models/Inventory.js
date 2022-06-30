@@ -10,5 +10,7 @@ const InventorySchema = new mongoose.Schema({
 }); 
 
 const Inventory = mongoose.model('Inventory', InventorySchema);
+InventorySchema.index({name: 'text'},{owner: 'text'});
+
 
 module.exports = Inventory;

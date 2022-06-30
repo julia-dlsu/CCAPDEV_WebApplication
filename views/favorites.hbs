@@ -27,20 +27,20 @@
 
     <!-- page content: Favorites -->
     <div class="container"> 
-        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
+        <div id="favorites-container" class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
             <!-- items -->
-            {{#each favorites}}
+            {{#each faves}}
                 <div class="col mb-1">
                     <div class="card h-100">
-                        <img src="../images/items/{{ this.image }}" class="card-img-top" alt="{{ this.name }}">
+                        <a href="/inventory/{{ this._id }}"><img src="../images/items/{{ this.image }}" class="card-img-top" alt="{{ this.name }}"></a>
                         <div class="card-body">
                             <!-- makes the card clickable -->
-                            <a href="/this._id"><h5 class="card-title">{{ this.name }}</h5></a>
+                            <a href="/inventory/{{ this._id }}"><h5 class="card-title">{{ this.name }}</h5></a>
                             <h6 class="card-subtitle text-muted">{{ this.category }}</h6>
                         </div>
                         <div class="card-footer"> 
                             <p class="card-text float-start qty">Qty: {{ this.quantity }}</p>
-                            <a class="btn ripple float-end" href="#" role="button"><i class="fa fa-trash"></i></a>
+                            <a class="btn ripple float-end remove" role="button"><i class="fa fa-trash"></i></a>
                         </div>
                     </div>
                 </div>
