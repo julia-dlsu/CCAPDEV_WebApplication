@@ -2,6 +2,7 @@ const router = require('express').Router();
 const userController = require('../controllers/userController');
 const inventoryController = require('../controllers/inventoryController');
 
+
 //feel free not to put auth yet when testing this page or any page to avoid annoyances
 /**  you may add more routers here*/
 
@@ -21,6 +22,10 @@ router.post('/change-pass', auth, userController.changePass);
 router.get('/', auth, inventoryController.getInventory);
 // for adding item to inventory
 router.post('/add-item', auth, inventoryController.addItem);
+router.get('/delete',auth,inventoryController.deleteItem);
+//router.get('/search',auth,inventoryController.findItems);
+router.get('/favorite',auth,inventoryController.addFavorite);
+router.get('/shopping-list',auth,inventoryController.addShoppingList);
 
 //if a session does not exist it will redirect to login 
 function auth(req,res,next){
