@@ -8,7 +8,7 @@
             <nav style="--bs-breadcrumb-divider: '>';">
                 <ol class="breadcrumb">
                     <i class="fad fa-warehouse-alt"></i>
-                    <li class="breadcrumb-item"><a href="/">Current Inventory</a></li>
+                    <li class="breadcrumb-item"><a href="/inventory">Current Inventory</a></li>
                 </ol>
             </nav>
         </div>
@@ -18,8 +18,8 @@
     <div class="row justify-content-center mb-3">
         <div class="col-sm-12 col-md-8">
             <form class="d-flex mb-3">
-                <input class="form-control me-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search" id="searchbar">
+                <button class="btn btn-outline-success" type="submit" id="searchbutton">Search</button>
                 <button type="button" class="btn btn-light me-auto" id="addButton" data-bs-toggle="modal" data-bs-target="#add-item-modal">Add Item</button>
             </form>
         </div>
@@ -87,7 +87,7 @@
                         <!-- modal footer -->
                         <div class="row justify-content-end mb-3">
                             <div class="col-sm-4 col-lg-2 text-end">
-                                <input type="submit" value = "Confirm" id="submit" data-bs-dismiss="modal" class="btn btn-primary btn-sm">
+                                <input type="submit" value = "Confirm" id="submit" class="btn btn-primary btn-sm">
                             </div>
                         </div>
                     </form>
