@@ -15,7 +15,7 @@ const controller = {
                 script: ["pictureValidation.js", "favorites.js"],
                 activeF: "active",
                 faves
-            })
+            });
         } catch (err) {
             console.error(err)
             res.status(500)
@@ -33,7 +33,31 @@ const controller = {
         db.deleteOne(Favorites, toDelete, function() {
             res.redirect('/favorites');
         });
-    }
+    },
+
+    // searches for an item in favorites using name or category
+    searchFave: async (req, res) => {
+        const search = req.body.search; // get the keyword
+        const faves = await Favorites.find({
+            $or: [
+                { name: {$regex: search, $options: 'i'} },
+                { category: {$regex: search, $options: 'i'} }
+            ]
+        }).lean().exec();
+
+        if (search){ // if search bar is not empty
+            res.render("favorites", {
+                title: search + " | Favorites",
+                style: "favorites.css",
+                script: ["pictureValidation.js", "favorites.js"],
+                activeF: "active",
+                faves
+            });
+        }
+        else { // if search bar is empty
+            res.redirect('/favorites');
+        }
+   }
 };
 
 module.exports = controller

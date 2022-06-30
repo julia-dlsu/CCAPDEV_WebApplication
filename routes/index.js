@@ -34,6 +34,8 @@ router.get('/add-shopping-list', auth, inventoryController.addShoppingList);
 router.get('/favorites', auth, favoritesController.getFavorites);
 // for deleting an item in favorites
 router.get('/delete-favorite', auth, favoritesController.deleteFave);
+// for searching items in favorites
+router.post('/favorites/search', auth, favoritesController.searchFave);
 
 // -- SHOPPING LIST -- //
 
