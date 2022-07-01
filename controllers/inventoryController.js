@@ -22,6 +22,7 @@ const controller = {
             res.status(500)
         }
     },
+
     /**Change: added session to addItem findOne. */
     addItem: async (req, res) => {
         const name = req.body.name
@@ -90,10 +91,10 @@ const controller = {
                     console.log(item.name + " has been removed from Favorites.");
                     return;
                 })
-
             } 
-            else
+            else{
                 await Favorite.create(item)
+            }
 
 
         } catch (err) {
@@ -128,8 +129,9 @@ const controller = {
                     return;
                 })
             } 
-            else
+            else{
                 await ShoppingList.create(item)
+            }
 
 
         } catch (err) {
@@ -169,7 +171,7 @@ const controller = {
             })
         }
         else { // if search bar is empty
-            res.redirect('/');
+            res.redirect('/inventory');
         }
         
     }, 

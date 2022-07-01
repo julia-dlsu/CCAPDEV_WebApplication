@@ -197,3 +197,21 @@ exports.deleteAccount = async (req, res) => {
     res.redirect('/login');
   });
 };
+
+// DASHBOARD
+exports.getDashboard = async (req, res) => {
+  user = {owner: req.session.uname};
+
+  const Invs = await Inventory.find(user).lean().exec();
+  const Faves = await Favorite.find(user).lean().exec();
+  const Shops = await ShoppingList.find(user).lean().exec();
+
+  res.render('dashboard', {
+    title: "Dashboard",
+    style: "dashboard.css",
+    activeD: "active",
+    inv: Invs.length,
+    fav: Faves.length,
+    shop: Shops.length
+  });
+};

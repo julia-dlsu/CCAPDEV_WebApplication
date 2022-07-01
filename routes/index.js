@@ -4,6 +4,9 @@ const inventoryController = require('../controllers/inventoryController');
 const favoritesController = require('../controllers/favoritesController');
 const { Router } = require('express');
 
+// -- DASHBOARD -- //
+router.get('/', auth, userController.getDashboard);
+
 // -- PROFILE -- //
 // for loading current session profile page
 router.get('/profile', auth, userController.getProfile);
@@ -18,20 +21,20 @@ router.post('/delete-account', userController.deleteAccount);
 
 // -- INVENTORY -- //
 // for loading inventory page
-router.get('/', auth, inventoryController.getInventory);
+router.get('/inventory', auth, inventoryController.getInventory);
 // for adding item to inventory
-router.post('/add-item', auth, inventoryController.addItem);
-router.get('/add-favorite', auth, inventoryController.addFavorite);
-router.get('/add-shopping-list', auth, inventoryController.addShoppingList);
+router.post('/inventory/add-item', auth, inventoryController.addItem);
+router.get('/inventory/add-favorite', auth, inventoryController.addFavorite);
+router.get('/inventory/add-shopping-list', auth, inventoryController.addShoppingList);
 // For deleting item in inventory
-router.get('/delete', auth, inventoryController.deleteItem);
+router.get('/inventory/delete', auth, inventoryController.deleteItem);
 //For searching item in inventory
-router.post('/search',auth,inventoryController.findItems);
+router.post('/inventory/search',auth,inventoryController.findItems);
 
 
 // -- ITEMS -- //
 router.get('/inventory/:id', auth, inventoryController.getItem); // <---- THIS IS FOR THE ITEM
-router.post('/update',auth,inventoryController.updateItem);
+router.post('/inventory/update',auth,inventoryController.updateItem);
 
 // -- FAVORITES -- //
 // for loading favorites page
