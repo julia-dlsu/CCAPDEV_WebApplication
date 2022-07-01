@@ -1,0 +1,19 @@
+<div class="col mb-1">
+    <div class="card h-80">
+        <div class="card-body">
+            <p class="fs-sm">Qty: {{ quantity }}</p>
+            <a href="/inventory/{{ _id }}"><img src="../images/items/{{ image }}" class="card-img-top" alt="{{ name }}"></a>
+            <a href="/inventory/{{ _id }}" id="itemPage">
+                <h5 class="card-title">{{ name }}</h5>
+            </a>
+            <h6 class="card-subtitle text-muted">{{ category }}</h6>
+        </div>
+        <div class="card-footer d-flex justify-content-center align-items-center">
+            <a class="btn ripple" href="#" role="button">
+                <div class="favorite"><i class='fas fa-heart'></i></div></a>
+            <a class="btn ripple" href="#" role="button">
+                <div class="shopping-list"><i class="fa fa-cart-plus"></i></div></a>
+            <a class="btn ripple" href="#" role="button"><div class="remove"><i class="fa fa-trash"></i></div></a>
+        </div>
+    </div>
+</div>

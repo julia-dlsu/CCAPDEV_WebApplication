@@ -1,0 +1,50 @@
+<!-- header w/ navigation-->
+{{> header }}
+
+<div class="container">
+    <!-- breadcrumb -->
+    <div class="row justify-content-center mt-3 p-2">
+        <div class="col-sm-12 col-md-8">
+            <nav style="--bs-breadcrumb-divider: '>';">
+                <ol class="breadcrumb">
+                    <i class="fad fa-warehouse-alt"></i>
+                    <li class="breadcrumb-item"><a href="/">Current Inventory</a></li>
+                    <li class="breadcrumb-item active">Favorites</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- search bar -->
+    <div class="row justify-content-center mb-3">
+        <div class="col-sm-12 col-md-8">
+            <form class="d-flex mb-3" action="/favorites/search" method="POST">
+                <input class="form-control me-2" type="search" placeholder="Search" name="search" />
+                <input class="btn btn-outline-success" type="submit" />
+            </form>
+        </div>
+    </div>
+
+    <!-- page content: Favorites -->
+    <div class="container"> 
+        <div id="favorites-container" class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
+            <!-- items -->
+            {{#each faves}}
+                <div class="col mb-1">
+                    <div class="card h-100">
+                        <a href="/inventory/{{ this._id }}"><img src="../images/items/{{ this.image }}" class="card-img-top" alt="{{ this.name }}"></a>
+                        <div class="card-body">
+                            <!-- makes the card clickable -->
+                            <a href="/inventory/{{ this._id }}"><h5 class="card-title">{{ this.name }}</h5></a>
+                            <h6 class="card-subtitle text-muted">{{ this.category }}</h6>
+                        </div>
+                        <div class="card-footer"> 
+                            <p class="card-text float-start qty">Qty: {{ this.quantity }}</p>
+                            <a class="btn ripple float-end remove" role="button"><i class="fa fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

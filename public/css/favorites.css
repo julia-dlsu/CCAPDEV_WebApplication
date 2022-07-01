@@ -1,0 +1,53 @@
+.card-img-top {
+    object-fit: cover;
+}
+
+.qty {
+    margin-top: 0.6em;
+    margin-bottom: 0.6rem;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    height: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-subtitle {
+    font-size: 0.8rem;
+}
+
+.card-footer {
+    font-size: 0.8rem;
+}
+
+.card-body {
+    height: 7.4rem;
+}
+
+.item {
+    margin: 0 auto;
+}
+
+h5 {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+img {
+    max-height: 15rem;
+}

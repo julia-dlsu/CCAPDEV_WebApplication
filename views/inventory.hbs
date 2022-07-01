@@ -1,0 +1,98 @@
+<!-- header w/ navigation-->
+{{> header }}
+
+<div class="container">
+    <!-- breadcrumb -->
+    <div class="row justify-content-center mt-3 p-2">
+         <div class="col-sm-12 col-md-8">
+            <nav style="--bs-breadcrumb-divider: '>';">
+                <ol class="breadcrumb">
+                    <i class="fad fa-warehouse-alt"></i>
+                    <li class="breadcrumb-item"><a href="/">Current Inventory</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- search bar -->
+    <div class="row justify-content-center mb-3">
+        <div class="col-sm-12 col-md-8">
+            <form class="d-flex mb-3">
+                <input class="form-control me-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button type="button" class="btn btn-light me-auto" id="addButton" data-bs-toggle="modal" data-bs-target="#add-item-modal">Add Item</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- page content: Inventory -->
+    <div class="container">
+        <div id="inventory-container" class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
+            <!-- items -->
+            {{#each items}}
+                {{>card}}
+            {{/each}}
+        </div>
+    </div>
+
+    <!--Add new Item-->
+    <div class="modal fade" id="add-item-modal">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Item</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+      
+                <!-- Modal body -->
+                <div class="modal-body p-4 pb-1">
+                    <form id="add-item-form" enctype="multipart/form-data">
+                        <div class="row mb-2">
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="name" class="form-label text-muted fw-light">Item Name</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="name" name="name">
+                            </div>
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="image" class="form-label text-muted fw-light">Upload Image</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="file" accept="image/*" id="image" name="image" onchange="return validPicture()" required /><br>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="description" class="form-label text-muted fw-light">Description</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="description" name="description">
+                            </div>
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="quantity" class="form-label text-muted fw-light">Quantity</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="qty" name="quantity">
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-sm-4 col-lg-2">
+                                <label for="category" class="form-label text-muted fw-light">Category</label>
+                            </div>
+                            <div class="col-sm-8 col-lg-4">
+                                <input type="text" class="form-control" id="category" name="category">
+                            </div>
+                        </div>
+                        <!-- modal footer -->
+                        <div class="row justify-content-end mb-3">
+                            <div class="col-sm-4 col-lg-2 text-end">
+                                <input type="submit" value = "Confirm" id="submit" data-bs-dismiss="modal" class="btn btn-primary btn-sm">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
