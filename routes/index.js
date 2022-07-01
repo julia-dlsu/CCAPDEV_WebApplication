@@ -21,13 +21,17 @@ router.post('/delete-account', userController.deleteAccount);
 router.get('/', auth, inventoryController.getInventory);
 // for adding item to inventory
 router.post('/add-item', auth, inventoryController.addItem);
-router.get('/delete', auth, inventoryController.deleteItem);
-//router.get('/search',auth,inventoryController.findItems);
 router.get('/add-favorite', auth, inventoryController.addFavorite);
 router.get('/add-shopping-list', auth, inventoryController.addShoppingList);
+// For deleting item in inventory
+router.get('/delete', auth, inventoryController.deleteItem);
+//For searching item in inventory
+router.post('/search',auth,inventoryController.findItems);
+
 
 // -- ITEMS -- //
-// router.get('/inventory/:id', auth, inventoryController.getItem);  <---- THIS IS FOR THE ITEM
+router.get('/inventory/:id', auth, inventoryController.getItem); // <---- THIS IS FOR THE ITEM
+router.post('/update',auth,inventoryController.updateItem);
 
 // -- FAVORITES -- //
 // for loading favorites page
