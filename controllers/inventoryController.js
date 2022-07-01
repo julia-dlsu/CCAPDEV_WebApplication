@@ -30,15 +30,15 @@ const controller = {
             const { img: image } = req.files
             var filename = req.session.uname + '-' + image.name;
             const owner = req.session.uname;
-            console.log(filename);
+            
             const result = await Inventory.findOne({name,filename, owner}).exec()
-            console.log(result);
+            
             if (result) throw Error('ITEM ALREADY EXSISTS')
 
 
             var itemPath = 'public/images/items';
 
-            console.log(filename);
+            
             await image.mv(path.resolve(itemPath, filename));
 
             const item = {
@@ -62,7 +62,6 @@ const controller = {
             console.error(err);
             res.status(500)
         }
-        //res.redirect('/');
     },
     
     addFavorite: async (req,res) =>{
@@ -70,8 +69,6 @@ const controller = {
         const owner = req.session.uname;
         try {
             const result = await Inventory.findOne({name, owner}).exec()
-            //console.log(name,owner);
-            //
 
             const item = {
                 name: result.name,
@@ -84,10 +81,9 @@ const controller = {
             
             const favItemName = item.name;
             const favOwner = item.owner;
-            console.log(favItemName,favOwner);
+           
             const favorite = await Favorite.findOne( {name:{$eq: favItemName}, owner:{$eq:favOwner}} ).exec();
-            console.log(favorite);
-            //Problem, di na nagtthrow pag walang mahanap.
+           
             if (favorite){
                 db.deleteOne(Favorite, item, function(flag) {
                     res.send(flag);
@@ -95,7 +91,7 @@ const controller = {
                     return;
                 })
 
-            } //throw Error('Item already in Favorites!');//alert('Item is already in favorites!');
+            } 
             else
                 await Favorite.create(item)
 
@@ -111,8 +107,7 @@ const controller = {
         const owner = req.session.uname;
         try {
             const result = await Inventory.findOne({name, owner}).exec()
-            //console.log(name,owner);
-
+            
             const item = {
                 name: result.name,
                 image: result.image,
@@ -124,9 +119,7 @@ const controller = {
             
             const SLOwner = item.owner;
             const SLItemName = item.name;
-            console.log(SLItemName,SLOwner);
             const shoppingList= await ShoppingList.findOne( {name:{$eq: SLItemName}, owner:{$eq:SLOwner}} ).exec();
-            console.log(shoppingList);
             //Problem, di na nagtthrow pag walang mahanap.
             if (shoppingList){
                 db.deleteOne(ShoppingList, item, function(flag) {
@@ -144,50 +137,92 @@ const controller = {
             res.status(500)
         }
     },
-    /*
-    updateItem: async (req, res) => {
-        const { img: image } = req.files
-        var filename = req.session.uname + '-' + image.name;
-        var itemPath = 'public/images/items';
-
-        console.log(filename);
-        await image.mv(path.resolve(itemPath, filename));
-
-        const item = {
-            image: filename,
-            description: req.body.description,
-            quantity: req.body.qty,
-            category: req.body.category,
-            owner: req.session.user
-        }
-    }*/
 
     deleteItem: async (req,res) => {
         db.deleteOne(Inventory, req.query, function(flag) {
-            res.send(flag)
+            db.deleteOne(Favorite, req.query,function(flag){
+                db.deleteOne(ShoppingList, req.query, function(flag){
+                    res.send(flag);
+                })
+            })
         })
-    },
-    /**Search. 
-    findItems: async (req,res) => {
-        const item = req.body.name;
-        const owner = req.session.uname;
-        db.findMany(Inventory,{item,owner},function(err){
-            res.send(err);
-        })
-
         
-        MyModel.find({$text: {$search: searchString}})
-       .skip(20)
-       .limit(10)
-       .exec(function(err, docs) { ... });
- 
-    } */
+    },
 
+    findItems: async (req,res) => {
+
+        const item = req.body.search;
+        
+        const items = await Inventory.find({
+            $or: [
+                { name: {$regex: item, $options: 'i'} },
+                { category: {$regex: item, $options: 'i'} }
+                ]
+        }).lean().exec();
+        if (item){ // if search bar is not empty
+            res.render("inventory", {
+                title: "Inventory",
+                style: "inventory.css",
+                script: ["pictureValidation.js", 'inventory.js'],
+                activeI: "active",
+                items
+            })
+        }
+        else { // if search bar is empty
+            res.redirect('/');
+        }
+        
+    }, 
+    
     getItem: async (req, res) => {
         // TODO: render the item here
-        // const itemID = req.params.id;
-        // console.log(itemID);
+        const itemID = req.params.id;
+        const owner= req.session.uname;
+
+        const result= await Inventory.findOne( {_id:{$eq: itemID}, owner:{$eq: owner}} ).exec();
+        
+        const item = {
+            name: result.name,
+            image: result.image,
+            description: result.description,
+            quantity: result.quantity,
+            category: result.category,
+        }
+
+        res.render("item", {
+            title: item.name+" item-page",
+            style: "items.css",
+            script: ["pictureValidation.js", 'inventory.js'],
+            activeI: "active",
+            item
+        })
+    },
+
+    updateItem: async (req, res) => {
+        
+        const { img: image } = req.files
+        var filename = req.session.uname + '-' + image.name;
+        var itemPath = 'public/images/items';
+        const name = req.body.name;
+        const owner = req.session.uname
+
+        if(image != undefined)
+        await image.mv(path.resolve(itemPath, filename));
+
+        var item={};
+        if(req.body.description != undefined)
+            item.description = req.body.description;
+        if(req.body.quantity != "")
+            item.quantity = req.body.qty;
+        if(req.body.category != undefined)
+            item.category = req.body.category;
+        
+        item.owner = owner;
+        Inventory.findOneAndUpdate({name,owner},item,function(flag){
+            res.send(flag)
+        })
     }
+    
 }
 
 module.exports = controller
