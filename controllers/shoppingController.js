@@ -2,6 +2,7 @@ const ShoppingList = require('../models/ShoppingList');
 const db = require('../models/db');
 
 const controller={
+
     getShopping: async function(req,res){
         const owner = req.session.uname;
             try {
@@ -21,6 +22,7 @@ const controller={
             }
     
     },
+
     deleteShop: function (req, res) {
         toDelete = {
             name: req.query.name,
@@ -32,6 +34,7 @@ const controller={
             res.redirect('/shopping');
         });
     },
+
     searchList:  async (req, res) => {
         const search = req.body.search; // get the keyword
         const shopping = await ShoppingList.find({
@@ -80,7 +83,7 @@ const controller={
         var name =req.query.name;
         var owner = req.session.uname;
         
-        var find = {name:name,owner:owner};
+        var find = {name:name, owner:owner};
         try{
             db.findOne(ShoppingList,find,'neededQty',function(result){
                 res.send(String(result.neededQty));
@@ -92,4 +95,5 @@ const controller={
     }
     
 }
+
 module.exports = controller;

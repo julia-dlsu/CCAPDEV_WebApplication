@@ -48,11 +48,13 @@ app.use((req, res, next) => {
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 
-'/add-item'
-'REST => GET, POST, PUT, DELETE, PATCH'
 // Login/registration routes
 app.use('/', authRouter);
 app.use('/', indexRouter);
+
+app.use(function(req, res, next) {
+  res.status(404).render('404');
+});
 
 app.listen(3000, function() {
   console.log("Node server is running at http://localhost:3000....");
