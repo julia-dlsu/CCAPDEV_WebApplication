@@ -10,7 +10,7 @@ $(document).ready(function() {
         console.log(newDel);
 
         // remove the transaction from the database
-        $.get('/delete-favorite', newDel, function(data, status) {
+        $.get('/favorites/delete', newDel, function(data, status) {
             console.log("data: ", data);
             console.log("status: ", status);
 

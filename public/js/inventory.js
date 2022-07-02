@@ -12,7 +12,7 @@ $(document).ready(async function () {
         formData.append('qty', $("#qty").val())
         formData.append('img', files)
         
-        const response = await fetch("/add-item", {
+        const response = await fetch("/inventory/add-item", {
             method: 'POST',
             body: formData
         })
@@ -36,7 +36,7 @@ $(document).ready(async function () {
         formData.append('qty', $("#qty").val())
         formData.append('img', files)
         
-        const response = await fetch("/update", {
+        const response = await fetch("/inventory/update", {
             method: 'POST',
             body: formData
         })
@@ -46,34 +46,40 @@ $(document).ready(async function () {
         $("#qty").val("");
         $("#image").val("");
         $('#myModal').modal('hide');
-        location.href = "/";
+        location.href = "/inventory";
     })
 
     $('#inventory-container').on('click', '.remove', function () {
+        // get the card to delete
+        var toDelete = this.parentNode.parentNode.parentNode.parentNode;
+        // get the name of the item to be deleted
         var name = this.parentElement.parentElement.previousElementSibling.children[2].children[0].innerHTML;
-        var topParent = this.parentElement.parentElement.parentElement.parentElement;
+        
+        var newDel = { name: name };
+        console.log(newDel);
+        console.log(toDelete)
 
-        console.log(name+' '+topParent.classList);
-        $.get('/delete', { name }, function (result) {
-            if (result) {
-                topParent.remove();
-            }
-        })
+        // remove the transaction from the database
+        $.get('/inventory/delete', newDel, function(data, status) {
+            console.log("status: ", status);
+
+            // removes the card whose button is clicked
+            toDelete.remove();
+        });
     })
 
     $('#inventory-container').on('click', '.favorite', function () {
-        alert('Item has been added to favorites!')
+        
         const refno = this.parentElement.parentElement.previousElementSibling.children[2].children[0].innerHTML;
-        $.get('/add-favorite', {refno}, async function (result) {
+        $.get('/inventory/add-favorite', {refno}, async function (result) {
             if(result)
                 console.log('favorites function has been executed.');
         })
     })
 
     $('#inventory-container').on('click', '.shopping-list', function () {
-        alert('Item has been added to shopping list!');
         const refno = this.parentElement.parentElement.previousElementSibling.children[2].children[0].innerHTML;
-        $.get('/add-shopping-list', {refno}, async function (result) {
+        $.get('/inventory/add-shopping-list', {refno}, async function (result) {
             if(result)
                 console.log('Shopping list function has been executed.');
         })

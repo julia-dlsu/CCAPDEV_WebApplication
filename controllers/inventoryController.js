@@ -141,14 +141,20 @@ const controller = {
     },
 
     deleteItem: async (req,res) => {
-        db.deleteOne(Inventory, req.query, function(flag) {
-            db.deleteOne(Favorite, req.query,function(flag){
-                db.deleteOne(ShoppingList, req.query, function(flag){
-                    res.send(flag);
+        toDelete = {
+            name: req.query.name,
+            owner: req.session.uname
+        };
+        console.log(toDelete)
+        
+        // delete the item in DB
+        db.deleteOne(Inventory, toDelete, function() {
+            db.deleteOne(Favorite, toDelete, function() {
+                db.deleteOne(ShoppingList, toDelete, function() {
+                    res.redirect('/inventory');
                 })
             })
-        })
-        
+        });
     },
 
     findItems: async (req,res) => {

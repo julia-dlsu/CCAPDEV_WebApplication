@@ -35,14 +35,14 @@ router.post('/inventory/search',auth,inventoryController.findItems);
 
 
 // -- ITEMS -- //
-router.get('/inventory/:id', auth, inventoryController.getItem); // <---- THIS IS FOR THE ITEM
+router.get('/inventory/:id', auth, inventoryController.getItem);
 router.post('/inventory/update',auth,inventoryController.updateItem);
 
 // -- FAVORITES -- //
 // for loading favorites page
 router.get('/favorites', auth, favoritesController.getFavorites);
 // for deleting an item in favorites
-router.get('/delete-favorite', auth, favoritesController.deleteFave);
+router.get('/favorites/delete', auth, favoritesController.deleteFave);
 // for searching items in favorites
 router.post('/favorites/search', auth, favoritesController.searchFave);
 
