@@ -12,7 +12,7 @@ $(document).ready(async function () {
         formData.append('qty', $("#qty").val())
         formData.append('img', files)
         
-        const response = await fetch("/inventory/add-item", {
+        const response = await fetch("/add-item", {
             method: 'POST',
             body: formData
         })
@@ -36,7 +36,7 @@ $(document).ready(async function () {
         formData.append('qty', $("#qty").val())
         formData.append('img', files)
         
-        const response = await fetch("/inventory/update", {
+        const response = await fetch("/update", {
             method: 'POST',
             body: formData
         })
@@ -46,14 +46,15 @@ $(document).ready(async function () {
         $("#qty").val("");
         $("#image").val("");
         $('#myModal').modal('hide');
-        location.href = "/inventory";
+        location.href = "/";
     })
 
     $('#inventory-container').on('click', '.remove', function () {
-        const refno = this.parentElement.parentElement.previousElementSibling.children[2].children[0].innerHTML;
-        const topParent = this.parentElement.parentElement.parentElement.parentElement;
-        console.log(refno+' '+topParent);
-        $.get('/inventory/delete', { refno }, function (result) {
+        var name = this.parentElement.parentElement.previousElementSibling.children[2].children[0].innerHTML;
+        var topParent = this.parentElement.parentElement.parentElement.parentElement;
+
+        console.log(name+' '+topParent.classList);
+        $.get('/delete', { name }, function (result) {
             if (result) {
                 topParent.remove();
             }
@@ -61,17 +62,18 @@ $(document).ready(async function () {
     })
 
     $('#inventory-container').on('click', '.favorite', function () {
-        
+        alert('Item has been added to favorites!')
         const refno = this.parentElement.parentElement.previousElementSibling.children[2].children[0].innerHTML;
-        $.get('/inventory/add-favorite', {refno}, async function (result) {
+        $.get('/add-favorite', {refno}, async function (result) {
             if(result)
                 console.log('favorites function has been executed.');
         })
     })
 
     $('#inventory-container').on('click', '.shopping-list', function () {
+        alert('Item has been added to shopping list!');
         const refno = this.parentElement.parentElement.previousElementSibling.children[2].children[0].innerHTML;
-        $.get('/inventory/add-shopping-list', {refno}, async function (result) {
+        $.get('/add-shopping-list', {refno}, async function (result) {
             if(result)
                 console.log('Shopping list function has been executed.');
         })
