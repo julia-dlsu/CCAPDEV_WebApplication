@@ -23,33 +23,32 @@ $(document).ready(function() {
         else {
             // TODO: check if password matches user pass in DB
             const pass = {currpass: cp};
-            var result = false;
 
             $.post('/check-pass', pass, function(data) {
-                // password is correct
-                if (data) {
-                    result = true;
+                if (!data) { // password is incorrect
+                    $('#curpass').css("background-color", "red");
+                    $('#error').text('Incorrect password');
                 }
                 else {
-                    $('#error').text('Incorrect password </3');
+                    changePassword();
                 }
             });
-
-            // TODO: password update in DB
-            $.post('/change-pass', {newpass: np}, function() {
-                // reset form field values
-                $('#curpass').val('');
-                $('#newpass').val('');
-                $('#repass').val('');
-
-                // reset form field colors
-                $('#newpass').css("background-color", "white");
-                $('#repass').css("background-color", "white");
-
-                $('#error').text('Password updated!');
-            });
+            
+            function changePassword(){
+                $.post('/change-pass', {newpass: np}, function() {
+                    // reset form field values
+                    $('#curpass').val('');
+                    $('#newpass').val('');
+                    $('#repass').val('');
+    
+                    // reset form field colors
+                    $('#newpass').css("background-color", "white");
+                    $('#repass').css("background-color", "white");
+    
+                    $('#error').text('Password updated!');
+                });
+            }
         }
     });
-
     
 });
