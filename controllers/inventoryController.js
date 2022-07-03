@@ -234,10 +234,13 @@ const controller = {
         const name = req.body.name;
         const owner = req.session.uname
 
-        if(image != undefined)
-        await image.mv(path.resolve(itemPath, filename));
-
+        
         var item={};
+        if(image != undefined){
+            await image.mv(path.resolve(itemPath, filename));
+            item.image = filename;
+        }
+
         if(req.body.description != undefined)
             item.description = req.body.description;
         if(req.body.quantity != "")
@@ -245,6 +248,7 @@ const controller = {
         if(req.body.category != undefined)
             item.category = req.body.category;
         
+
         item.owner = owner;
         Inventory.findOneAndUpdate({name,owner},item,function(flag){
             res.send(flag)
