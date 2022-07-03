@@ -10,6 +10,16 @@ const controller = {
         try {
             const items = await Inventory.find({owner}).lean().exec()
             
+            // for loading the proper icon color
+            items.forEach(function(item) {
+                if (item.favorite){
+                    item.favorite = "favorited";
+                }
+                if (item.shopping){
+                    item.shopping = "shopped"
+                }
+            });
+            
             res.render("inventory", {
                 title: "Inventory",
                 style: "inventory.css",
@@ -48,7 +58,9 @@ const controller = {
                 description: req.body.description,
                 quantity: req.body.qty,
                 category: req.body.category,
-                owner: req.session.uname
+                owner: req.session.uname,
+                favorite: false,
+                shopping: false
             }
 
             await Inventory.create(item)
@@ -86,14 +98,18 @@ const controller = {
             const favorite = await Favorite.findOne( {name:{$eq: favItemName}, owner:{$eq:favOwner}} ).exec();
            
             if (favorite){
-                db.deleteOne(Favorite, item, function(flag) {
-                    res.send(flag);
+                db.deleteOne(Favorite, item, function() {
+                    res.send("black");
                     console.log(item.name + " has been removed from Favorites.");
                     return;
                 })
+                await Inventory.findOneAndUpdate({name, owner}, {favorite: false}).exec()
             } 
             else{
                 await Favorite.create(item)
+                await Inventory.findOneAndUpdate({name, owner}, {favorite: true}).exec()
+                res.send("red");
+                console.log(item.name + " has been added to Favorites.");
             }
 
 
@@ -121,16 +137,20 @@ const controller = {
             const SLOwner = item.owner;
             const SLItemName = item.name;
             const shoppingList= await ShoppingList.findOne( {name:{$eq: SLItemName}, owner:{$eq:SLOwner}} ).exec();
-            //Problem, di na nagtthrow pag walang mahanap.
+
             if (shoppingList){
                 db.deleteOne(ShoppingList, item, function(flag) {
-                    res.send(flag);
+                    res.send("black");
                     console.log(item.name + " has been removed from Shopping List.");
                     return;
                 })
+                await Inventory.findOneAndUpdate({name, owner}, {shopping: false}).exec()
             } 
             else{
                 await ShoppingList.create(item)
+                await Inventory.findOneAndUpdate({name, owner}, {shopping: true}).exec()
+                res.send("green");
+                console.log(item.name + " has been added to ShoppingList.");
             }
 
 
@@ -145,7 +165,7 @@ const controller = {
             name: req.query.name,
             owner: req.session.uname
         };
-        console.log(toDelete);
+        console.log(toDelete)
         
         // delete the item in DB
         db.deleteOne(Inventory, toDelete, function() {
@@ -156,8 +176,6 @@ const controller = {
             })
         });
     },
-        
-    
 
     findItems: async (req,res) => {
 
@@ -232,6 +250,7 @@ const controller = {
             res.send(flag)
         })
     },
+
     renderQuantity: function(req,res){
         var name =req.query.name;
         var owner = req.session.uname;
@@ -243,6 +262,7 @@ const controller = {
       
    
     },
+    
     updateQuantity: function(req,res){
         
         const newQty= req.query.quantity;

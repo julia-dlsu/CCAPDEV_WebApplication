@@ -28,7 +28,6 @@ $(document).ready(function() {
 
 	}
    
-   
     $('#shopList').on('click', '.remove', function () {
         // get the card to delete
         var toDelete = this.parentNode.parentNode;

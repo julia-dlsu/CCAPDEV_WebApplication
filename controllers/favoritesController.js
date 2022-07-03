@@ -1,4 +1,5 @@
 const Favorites = require('../models/Favorites')
+const Inventory = require('../models/Inventory')
 const db = require('../models/db')
 
 const controller = {
@@ -30,6 +31,7 @@ const controller = {
         };
         
         // delete the item in favorites DB
+        Inventory.findOneAndUpdate(toDelete, {favorite: false}).exec()
         db.deleteOne(Favorites, toDelete, function() {
             res.redirect('/favorites');
         });

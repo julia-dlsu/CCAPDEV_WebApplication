@@ -26,10 +26,9 @@ tr,td{
 }
 
 .card-title {
-    font-size: 0.9rem;
     font-weight: bold;
-    height: 3rem;
     margin-bottom: 0.75rem;
+    overflow: hidden;
 }
 
 button{
@@ -48,7 +47,7 @@ button{
 }
 
 h5 {
-    color: black; 
+    color: black;
 }
 
 a:link {
@@ -58,4 +57,16 @@ a:link {
 a:hover {
     color: black;
     text-decoration: none;
+}
+
+.favorited {
+    color: red;
+}
+
+.shopped {
+    color: green;
+}
+
+h6 {
+   font-size: 0.8rem; 
 }

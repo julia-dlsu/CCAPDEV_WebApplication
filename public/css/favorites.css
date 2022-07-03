@@ -13,10 +13,9 @@
 }
 
 .card-title {
-    font-size: 0.9rem;
     font-weight: bold;
-    height: 3rem;
     margin-bottom: 0.75rem;
+    overflow: hidden;
 }
 
 .card-subtitle {
@@ -25,10 +24,6 @@
 
 .card-footer {
     font-size: 0.8rem;
-}
-
-.card-body {
-    height: 7.4rem;
 }
 
 .item {

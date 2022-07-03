@@ -5,7 +5,7 @@ const InventoryModel = require('./Inventory.js');
 const FavoritesModel = require('./Favorites.js');
 const ShoppingListModel = require('./ShoppingList.js');
 
-const url = 'mongodb://localhost:27017/ccapdev-MP';
+const url = 'mongodb://localhost:27017/ccapdev-MPDB';
 
 const options = {
     useUnifiedTopology: true,

@@ -1,4 +1,5 @@
 const ShoppingList = require('../models/ShoppingList');
+const Inventory = require('../models/Inventory')
 const db = require('../models/db');
 
 const controller={
@@ -30,6 +31,7 @@ const controller={
         };
         console.log(req.query.name);
         // delete the item 
+        Inventory.findOneAndUpdate(toDelete, {shopping: false}).exec()
         db.deleteOne(ShoppingList, toDelete, function() {
             res.redirect('/shopping');
         });
@@ -60,10 +62,10 @@ const controller={
 
     clearList:  function(req,res){
         const owner = req.session.uname;
+        Inventory.updateMany({owner}, {shopping: false}).exec()
         db.deleteMany(ShoppingList,{owner}, function(){
          res.redirect('/shopping')
         })
-
     },
 
     //not sure why console.log says document modified is undefined. works on mongoDB 

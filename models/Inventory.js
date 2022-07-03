@@ -6,7 +6,9 @@ const InventorySchema = new mongoose.Schema({
     description: {type: String, required: true},
     quantity: {type: Number, required: true},
     category: {type: String, required: true},
-    owner: {type: String, required: true}
+    owner: {type: String, required: true},
+    favorite: {type: Boolean, required: true},
+    shopping: {type: Boolean, required: true},
 }); 
 
 const Inventory = mongoose.model('Inventory', InventorySchema);

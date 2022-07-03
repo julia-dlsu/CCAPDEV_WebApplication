@@ -1,6 +1,5 @@
-
 $(document).ready(async function () {
-   
+
     var quan = $(".quantity");
 	var plus = $(".plus");
 	var minus = $(".minus");
@@ -25,6 +24,7 @@ $(document).ready(async function () {
 		}.bind(null, i));
 
     }
+
     const container = $('#inventory-container')
     $('#add-item-form').submit(async function (e) {
         e.preventDefault()
@@ -51,7 +51,6 @@ $(document).ready(async function () {
     })
 
     $('#update-item-form').submit(async function(e){
-
         e.preventDefault()
         const files = $('#image').prop('files')[0]
         const formData = new FormData()
@@ -73,7 +72,6 @@ $(document).ready(async function () {
         $("#image").val("");
         $('#myModal').modal('hide');
         location.href = "/inventory";
-
     })
 
     $('#inventory-container').on('click', '.remove', function () {
@@ -91,23 +89,32 @@ $(document).ready(async function () {
             toDelete.remove();
         });
     })
-    
 
     $('#inventory-container').on('click', '.favorite', function () {
-        alert('Item has been added to favorites!')
         const refno = this.parentElement.parentElement.previousElementSibling.children[2].children[0].innerHTML;
+        const favorite = $(this).children();
+
         $.get('/inventory/add-favorite', {refno}, async function (result) {
-            if(result)
-                console.log('favorites function has been executed.');
+            if (result == "red"){ // change heart to red
+                favorite.addClass("favorited");
+            }
+            else { // change heart to black
+                favorite.removeClass("favorited");
+            }
         })
     })
 
     $('#inventory-container').on('click', '.shopping-list', function () {
-        alert('Item has been added to shopping list!');
         const refno = this.parentElement.parentElement.previousElementSibling.children[2].children[0].innerHTML;
+        const shopping = $(this).children();
+
         $.get('/inventory/add-shopping-list', {refno}, async function (result) {
-            if(result)
-                console.log('Shopping list function has been executed.');
+            if (result == "green"){ // change heart to green
+                shopping.addClass("shopped");
+            }
+            else { // change heart to black
+                shopping.removeClass("shopped");
+            }
         })
     })
     
