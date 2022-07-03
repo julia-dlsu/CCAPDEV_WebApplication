@@ -145,7 +145,7 @@ const controller = {
             name: req.query.name,
             owner: req.session.uname
         };
-        console.log(toDelete)
+        console.log(toDelete);
         
         // delete the item in DB
         db.deleteOne(Inventory, toDelete, function() {
@@ -156,6 +156,8 @@ const controller = {
             })
         });
     },
+        
+    
 
     findItems: async (req,res) => {
 
