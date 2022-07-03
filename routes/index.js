@@ -37,6 +37,8 @@ router.post('/inventory/search',auth,inventoryController.findItems);
 // -- ITEMS -- //
 router.get('/inventory/:id', auth, inventoryController.getItem);
 router.post('/inventory/update',auth,inventoryController.updateItem);
+router.get('/renderItemQuans',auth,inventoryController.renderQuantity );
+router.get('/updateQty',inventoryController.updateQuantity)
 
 // -- FAVORITES -- //
 // for loading favorites page

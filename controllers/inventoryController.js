@@ -229,6 +229,26 @@ const controller = {
         Inventory.findOneAndUpdate({name,owner},item,function(flag){
             res.send(flag)
         })
+    },
+    renderQuantity: function(req,res){
+        var name =req.query.name;
+        var owner = req.session.uname;
+        
+        var find = {name:name, owner:owner};
+            db.findOne(Inventory,find,'quantity',function(result){
+                res.send(String(result.quantity));
+            })
+      
+   
+    },
+    updateQuantity: function(req,res){
+        
+        const newQty= req.query.quantity;
+        var toUp={name:req.query.name, owner: req.session.uname}
+        db.updateOne(Inventory, toUp, {$set: {quantity:newQty}}, function(result){
+         
+        })
+        
     }
     
 }
