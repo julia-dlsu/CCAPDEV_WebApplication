@@ -207,8 +207,10 @@ const controller = {
         const itemID = req.params.id;
         const owner= req.session.uname;
 
-        const result= await Inventory.findOne( {_id:{$eq: itemID}, owner:{$eq: owner}} ).exec();
-        
+        var result= await Inventory.findOne( {_id:{$eq: itemID}, owner:{$eq: owner}} ).exec();
+        if (!result){
+            result= await Favorite.findOne( {_id:{$eq: itemID}, owner:{$eq: owner}} ).exec();
+        }
         const item = {
             name: result.name,
             image: result.image,
