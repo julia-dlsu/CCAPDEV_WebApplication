@@ -1,11 +1,16 @@
 {
-  "name": "test_sessions",
+  "name": "inventory_app",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julia-dlsu/CCAPDEV_WebApplication.git"
   },
   "keywords": [],
   "author": "",
@@ -29,11 +34,8 @@
     "mongoose": "^6.3.5",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "sessions": "^0.0.2-7"
-  },
-  "devDependencies": {
+    "sessions": "^0.0.2-7",
     "dotenv": "^16.0.1",
     "nodemon": "^2.0.18"
-  },
-  "description": ""
+  }
 }

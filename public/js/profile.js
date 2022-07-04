@@ -11,11 +11,13 @@ $(document).ready(function() {
             $('#error').text("Fill up all fields.");
         }
         else if (np.length < 8 || rp.length < 8) {
+            $('#curpass').css("background-color", "white");
             $('#newpass').css("background-color", "red");
             $('#repass').css("background-color", "red");
             $('#error').text("Password has less than 8 characters.");
         }
         else if (np != rp){
+            $('#curpass').css("background-color", "white");
             $('#newpass').css("background-color", "red");
             $('#repass').css("background-color", "red");
             $('#error').text("Entered passwords do not match.");
