@@ -279,11 +279,7 @@ const controller = {
         const newQty= req.query.quantity;
         var toUp={name:req.query.name, owner: req.session.uname};
 
-        var areas= {
-            Inventory,
-            ShoppingList,
-            Favorite
-        }
+       
         Inventory.findOneAndUpdate(toUp,{quantity:newQty},function(flag){
             //res.send(flag);
             ShoppingList.findOneAndUpdate(toUp,{quantity:newQty},function(flag){
