@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
+const dotenv = require(`dotenv`);
+
+dotenv.config();
+const url = process.env.SERVER_DB_URI;
 
 const UserModel = require('./Acct.js');
 const InventoryModel = require('./Inventory.js');
 const FavoritesModel = require('./Favorites.js');
 const ShoppingListModel = require('./ShoppingList.js');
-
-const url = 'mongodb://localhost:27017/ccapdev-MPDB';
 
 const options = {
     useUnifiedTopology: true,

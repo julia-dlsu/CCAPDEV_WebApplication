@@ -29,6 +29,7 @@ tr,td{
     font-weight: bold;
     margin-bottom: 0.75rem;
     overflow: hidden;
+    height: 1.5rem;
 }
 
 button{
