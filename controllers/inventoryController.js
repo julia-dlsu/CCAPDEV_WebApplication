@@ -253,7 +253,12 @@ const controller = {
 
         item.owner = owner;
         Inventory.findOneAndUpdate({name,owner},item,function(flag){
-            res.send(flag)
+            ShoppingList.findOneAndUpdate({name,owner},item,function(flag){
+                Favorite.findOneAndUpdate({name,owner},item,function(flag){
+                    res.send(flag)
+                })
+            })
+               
         })
     },
 
@@ -272,10 +277,24 @@ const controller = {
     updateQuantity: function(req,res){
         
         const newQty= req.query.quantity;
-        var toUp={name:req.query.name, owner: req.session.uname}
-        db.updateOne(Inventory, toUp, {$set: {quantity:newQty}}, function(result){
-         
+        var toUp={name:req.query.name, owner: req.session.uname};
+
+        var areas= {
+            Inventory,
+            ShoppingList,
+            Favorite
+        }
+        Inventory.findOneAndUpdate(toUp,{quantity:newQty},function(flag){
+            //res.send(flag);
+            ShoppingList.findOneAndUpdate(toUp,{quantity:newQty},function(flag){
+                // res.send(flag);
+                Favorite.findOneAndUpdate(toUp,{quantity:newQty},function(flag){
+                    // res.send(flag);
+                 })
+             })
         })
+        
+       
         
     }
     
