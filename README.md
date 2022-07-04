@@ -1,5 +1,6 @@
 # CCAPDEV_WebApplication
 Stock Up: Household Inventory Management Application
+Authors: Melanie Aquino, Julianne de Veyra, Ryan Deculawan
 
 Local Usage:
 - download the files
